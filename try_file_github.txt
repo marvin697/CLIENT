@@ -6,5 +6,10 @@ diri pagbutang ug comment vin
 
 HELLO WORLD
 
+<<<<<<< HEAD
 Hello vin send Nud*s HAHA
 ngano kaha ni
+=======
+
+MY  HELLO NGA WORLD
+>>>>>>> f036a4018a4b2950524b798bbed4fe0f27825d95
