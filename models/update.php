@@ -1,6 +1,52 @@
 <?php 
     require '../config/dbcon.php';
 
+    if(isset($_POST['update_user'])){
+
+        
+        $id = $_POST['user_id'];
+        $username = $_POST['username'];
+        $fullname = $_POST['fullname'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
+        $file = $_FILES['file'];
+        $role = $_POST['role'];
+
+        if($_FILES['file']['size'] == 0 ){
+
+            $sql = mysqli_query($conn,"UPDATE user 
+                                                
+                SET username = '$username', fullname ='$fullname', contact ='$contact', email ='$email', role ='$role' 
+                WHERE user_id ='".$id."' ");
+
+            if($sql){
+                header("Location: ../users.php");
+            }
+        }else{
+            //IMAGE TYPE
+            $file=$_FILES['file']['name'];
+            $tmp_name=$_FILES['file']['tmp_name'];
+            $path="../models/upload_profile/" .$file;
+            $file1=explode(".",$file);
+            $ext=$file1[1];
+            $allowed=array("jpg","jpeg","png","gif","pdf","wmv");
+
+            if(in_array($ext,$allowed)){
+                move_uploaded_file($tmp_name,$path);
+
+                $sql = mysqli_query($conn,"UPDATE user 
+                                                
+                                SET username = '$username', fullname ='$fullname', contact ='$contact', email ='$email', role ='$role', image ='$file' 
+                                WHERE user_id ='".$id."' ");
+
+                if($sql){
+                    header("Location: ../users.php");
+                }
+
+            }
+        }
+
+    }
     if(isset($_POST['update_bh'])){
 
         

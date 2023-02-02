@@ -101,6 +101,9 @@
                                                 <a href="models/activate-deactivate.php?deactivate_user=<?= $row['0'] ?>"
                                                     class="dropdown-item bg-danger text-white"><i
                                                         class="fa fa-close "></i> Deactivate</a>
+                                                <a href="edit_user.php?user_id=<?= $row['0'] ?>"
+                                                    class="dropdown-item bg-success text-white"><i
+                                                        class="fa fa-edit "></i> Edit Information</a>
                                                 <a href="reset_password.php?reset_user_pass=<?= $row['0'] ?>"
                                                     class="dropdown-item bg-dark text-white"><i
                                                         class="fa fa-key "></i> Reset Password</a>
