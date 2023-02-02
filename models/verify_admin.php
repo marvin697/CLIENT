@@ -26,7 +26,7 @@
                 if ($_SESSION['role'] == 'admin') {
                     header('location: ../dashboard.php');
                 }else {
-                    header('location: ../owners_dashboard.php');
+                    header('location: ../owner/dashboard.php');
                 }
                 
             }
