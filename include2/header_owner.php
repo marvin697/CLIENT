@@ -7,6 +7,7 @@
   
       $count = mysqli_num_rows($res);
       if ($count < 1) {
+          
           echo "<script>alert('YOU NEED TO LOGIN FIRST.');window.location.replace('../login.php');</script>";
       }
   } else {
