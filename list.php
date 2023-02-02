@@ -78,12 +78,12 @@
                                     <td>
                                         <div class="btn-group">
 											 <a href="view_bhouse.php?bhouse_id=<?= $row['0'] ?>"
-                                                    class="btn btn-sm btn-dark mr-1"><i
-                                                        class="fa fa-eye "></i> View More</a>
+                                                    class="btn btn-sm btn-success mr-1"><i
+                                                        class="fa fa-eye "></i> </a>
 												<a href="#" type="button" data-toggle="modal"
                                                     data-target="#exampleModal<?php echo $row['0']; ?>"
                                                     class="btn btn-sm btn-danger ">
-                                                    <i class="fa fa-trash "></i> Delete
+                                                    <i class="fa fa-trash "></i> 
                                                 </a>
                                             
                                            

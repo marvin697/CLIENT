@@ -47,18 +47,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <?php
-					if(isset($errMsg)){
-						echo '<div style="color:#FF0000;text-align:center;font-size:17px;">'.$errMsg.'</div>';
-					}
-				?>
                 <h2><?= $bh ?> Boarding House</h2>
                 <div id="tableStyle" class="card p-4">
                     <div class="">
-                        <a href="list.php"><button class="btn btn-sm btn-outline-dark  mb-4"><i
+                        <a href="list.php"><button class="btn btn-sm btn-outline-dark  mb-"><i
                                     class="fa fa-angle-double-left"></i> Back </button></a>
                     </div>
-                    <hr>
+                    <hr style="border:0.5px solid black">
                     <div class="">
                         <div class="row">
                             <div class="col-md-5">
@@ -67,14 +62,9 @@
                                             <tr>
                                                 <th class="text-center"><a target="_blank" href="models/upload_bh/<?php echo $img; ?>"><img
                                                     src="models/upload_bh/<?php echo $img; ?>"
-                                                    class="mr-0 mt-0 p-2 rounded" height="400px" width="400px"></a>
+                                                    class="mr-0 mt-0 p-2 rounded" height="350px" width="350px"></a>
                                                 </th>
                                             </tr>
-                                            <!-- <tr>
-                                                <td class="text-center">
-                                                    <a href="" class=""><button class="btn btn-sm btn-outline-primary">Edit Information</button></a>
-                                                </td>
-                                            </tr> -->
                                     </table>
                                     <br><br>
                                 </div>    
@@ -94,21 +84,29 @@
                                             </tr>
                                             <tr class="mt-2 text-uppercase" style="font-size: 18px">
                                                 <th><span> Description : </span><hr></th>
-                                                <td><span style="margin-left: 25px;"> <?= $desc; ?> </span><hr></td>
+                                                <td><span class="text-justify" style="margin-left: 25px;"> <?= $desc; ?> </span><hr></td>
                                             </tr>
                                             <tr class="mt-2 text-uppercase" style="font-size: 18px">
                                                 <th><span> Amenities : </span><hr></th>
                                                 <td><span style="margin-left: 25px;"> <?= $ame; ?> </span><hr></td>
+                                            </tr> <br><br>
+                                            <tr class="mt-2 text-uppercase" style="font-size: 18px">
+                                                <th>
+                                                        <a href="edit_bhouse.php?bhouse_id=<?= $bhouse_id; ?>" class=""><button class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i> Edit Information</button></a>
+                                                </th>
                                             </tr>
-                                            
                                     </table>
-                                    <br><br>
                                 </div>    
                             </div>
-                            
+                            <br><br>
                         </div>
                     </div>
-                    
+                    <hr style="border:0.5px solid black; ">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-md"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
