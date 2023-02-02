@@ -77,7 +77,7 @@
                                     <td><?php echo $row['2'];?></td>
                                     <td>
                                         <div class="btn-group">
-											 <a href="models/activate-deactivate.php?activate_user=<?= $row['0'] ?>"
+											 <a href="view_bhouse.php?bhouse_id=<?= $row['0'] ?>"
                                                     class="btn btn-sm btn-dark mr-1"><i
                                                         class="fa fa-eye "></i> View More</a>
 												<a href="#" type="button" data-toggle="modal"
