@@ -55,6 +55,7 @@
                         <table id="example" class="table table-sm ">
                             <thead>
                                 <tr>
+                                    <th>no.</th>
                                     <th>profile</th>
                                     <th>fullname</th>
                                     <th>contact number</th>
@@ -62,12 +63,13 @@
                                     <th>username</th>
                                     <th>role</th>
                                     <th>status</th>
-                                    <th>Actions</th>
+                                    <th>actions</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                                <?php while ($row = $result->fetch_row()) : ?>
+                                <?php $i = 1; while ($row = $result->fetch_row()) : ?>
                                 <tr>
+                                    <td><?php echo $i++;?></td>
                                     <td><a target="_blank" href="models/upload_profile/<?php echo $row['6']; ?>"><img
                                                 src="models/upload_profile/<?php echo $row[6]; ?>"
                                                 class="mr-0 mt-0 rounded" height="50px" width="50px"></a></td>
