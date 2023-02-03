@@ -26,16 +26,17 @@
                         <span class="float-right">
                                 <div class="input-group">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-plus"></i> Add</button>
+                                        <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-plus"></i> Add</button>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="dashboard.php?male">Male</a>
-                                        <a class="dropdown-item" href="dashboard.php?female">Female</a>
-                                        <a class="dropdown-item" href="dashboard.php?senior">Senior</a>
+                                        <a class="dropdown-item" href="dashboard.php?male" data-toggle="modal" data-target=".bd-example-modal-lg">1</a>
+                                        <a class="dropdown-item" href="dashboard.php?female" data-toggle="modal" data-target=".bd-example-modal-lg">2</a>
+                                        <a class="dropdown-item" href="dashboard.php?senior" data-toggle="modal" data-target=".bd-example-modal-lg">3</a>
                                     </div>
                                 </div>
                         </span>
                 </div>
             </div>
+            <?php include_once '../view_pages/modal.php'; ?>
         </div>
     </div>
     
