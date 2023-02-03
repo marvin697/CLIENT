@@ -70,12 +70,15 @@
     }
     if(isset($_POST['register_bh'])) {
 
+        $user_id = $_POST['user_id'];
+        $role = $_POST['role'];
+
         $bhouse_name = $_POST['bhouse_name'];
         $description = $_POST['description'];
         $location = $_POST['location'];
         $amenities = $_POST['amenities'];
         $file = $_FILES['file'];
-        $user_id = $_POST['user_id'];
+       
 
 
 
@@ -89,10 +92,12 @@
             $result = mysqli_query($conn, $query);
 
             if($result){
-                session_start();
-                $_SESSION['message'] = "<div class='card bg-success text-white  p-2'> <h5>Registered successfully.</h5> <br></div>";
-
-                header('location: ../list.php');
+                
+                if($role == 'user'){
+                    header('location: ../owner/dashboard.php');
+                }else{
+                    header('location: ../list.php');
+                }
 
             }else {
                 echo 'Error.';
@@ -117,10 +122,12 @@
                 $result = mysqli_query($conn, $query);
 
                 if($result){
-                    session_start();
-                    $_SESSION['message'] = "<div class='card bg-success text-white  p-2'> <h5>Registered successfully.</h5> <br></div>";
 
-                    header('location: ../list.php');
+                    if($role == 'user'){
+                        header('location: ../owner/dashboard.php');
+                    }else{
+                        header('location: ../list.php');
+                    }
 
                 }else {
                     echo 'Error.';

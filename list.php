@@ -39,10 +39,10 @@
 				?>
                 <h2>List Of Boarding House</h2>
                 <div id="tableStyle" class="card p-4">
-                    <div class="">
+                    <!-- <div class="">
                         <a href="add_bh.php"><button class="btn btn-sm btn-outline-primary  mb-4">Add <i
                                     class="fa fa-plus"></i></button></a>
-                    </div>
+                    </div> -->
                     <div class="table-responsive">
                         <?php
 						include_once 'config/dbcon.php';

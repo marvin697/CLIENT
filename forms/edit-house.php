@@ -7,11 +7,12 @@
 			}
 		?>
         <h2 class="text-center"><i class="fa fa-edit"></i> Boarding House</h2>
-        <form action="models/update.php" method="post" enctype="multipart/form-data">
+        <form action="../models/update.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="bhouse_name">BH Name</label>
+                        <input type="hidden" name="role" value="<?php echo $_SESSION['role']; ?>">
                         <input type="hidden" name="bhouse_id" value="<?php echo $bhouse_id; ?>">
                         <input type="text" class="form-control" id="bhouse_name" placeholder="Boarding House Name"
                             name="bhouse_name" value="<?php echo $bh; ?>" required>

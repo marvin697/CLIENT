@@ -51,6 +51,7 @@
 
         
         $id = $_POST['bhouse_id'];
+        $role = $_POST['role'];
         $bhouse_name = $_POST['bhouse_name'];
         $description = $_POST['description'];
         $location = $_POST['location'];
@@ -65,7 +66,13 @@
                 WHERE bhouse_id ='".$id."' ");
 
             if($sql){
-                header("Location: ../view_bhouse.php?bhouse_id=$id");
+
+                if($role == 'user'){
+                    header('location: ../owner/dashboard.php');
+                }else{
+                    header("Location: ../view_bhouse.php?bhouse_id=$id");
+                }
+                
             }
         }else{
             //IMAGE TYPE
@@ -85,7 +92,13 @@
                 WHERE bhouse_id ='".$id."' ");
 
                 if($sql){
-                    header("Location: ../view_bhouse.php?bhouse_id=$id");
+
+                    if($role == 'user'){
+                        header('location: ../owner/dashboard.php');
+                    }else{
+                        header("Location: ../view_bhouse.php?bhouse_id=$id");
+                    }
+                    
                 }
 
             }
