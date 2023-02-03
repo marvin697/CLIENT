@@ -28,9 +28,9 @@
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-plus"></i> Add</button>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="dashboard.php?male" data-toggle="modal" data-target=".bd-example-modal-lg">1</a>
-                                        <a class="dropdown-item" href="dashboard.php?female" data-toggle="modal" data-target=".bd-example-modal-lg">2</a>
-                                        <a class="dropdown-item" href="dashboard.php?senior" data-toggle="modal" data-target=".bd-example-modal-lg">3</a>
+                                        <a class="dropdown-item" href="#" data-target="#bed=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Bed</a>
+                                        <a class="dropdown-item" href="#" data-target="#room=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Room</a>
+                                        <a class="dropdown-item" href="#" data-target="#rules=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Rules</a>
                                     </div>
                                 </div>
                         </span>
