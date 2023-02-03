@@ -30,18 +30,65 @@
         </div>
     </div>
 </nav>
-<!-- end header nav -->
-<?php include '../include2/ownerside-nav.php';?>
-<section class="wrapper" style="margin-left: 16%;margin-top: -11%;">
-    <!-- <div class="container"> -->
-    <!-- <div class="row"> -->
-    <div class="col-md-12">
-        <h1>Dash board</h1>
-        <div class="row">
-            
+<!-- end header nav --> 
+<div class="card-body">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="">
+                <?php 
+                        $sql = mysqli_query($conn,"SELECT * FROM boarding_house ");
+                        if($sql->num_rows > 0){
+                ?>
+                    <ul class="list-group-horizontal">
+                        <table>
+                            <tbody>
+                                    <li id="list" class="list-group-item  mr-4 mb-4">
+                                            <div class="" style="width: 18rem;">
+                                                <img class="card-img-top" src="../models/upload_bh/house.png" alt="Card image cap">
+                                                <hr style="border: 2px solid #0a0a0a;">
+                                                <div class="card-body">sdsds</div>
+                                            </div>
+                                    </li>
+                                    <li id="list" class="list-group-item  mr-4 mb-4">
+                                            <div class="" style="width: 18rem;">
+                                                <img class="card-img-top" src="../models/upload_bh/house.png" alt="Card image cap">
+                                                <hr style="border: 2px solid #0a0a0a;">
+                                                <div class="card-body">sdsds</div>
+                                            </div>
+                                    </li>
+                                    <li id="list" class="list-group-item  mr-4 mb-4">
+                                            <div class="" style="width: 18rem;">
+                                                <img class="card-img-top" src="../models/upload_bh/house.png" alt="Card image cap">
+                                                <hr style="border: 2px solid #0a0a0a;">
+                                                <div class="card-body">sdsds</div>
+                                            </div>
+                                    </li>
+                                    
+                            </tbody>
+                        </table>
+                    </ul>
+                <?php
+                        }
+                ?>
+            </div>
         </div>
+        <div class="col-md-1"></div>
     </div>
-    <!-- </div> -->
-    <!-- </div> -->
-</section>
+</div>
+<style>
+    .list-group-horizontal .list-group-item {
+        display: inline-block;
+    }
+    #list{
+        box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        border: 3px solid #0a0a0a;
+        border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
+    }
+    
+</style>
 <?php include '../include2/footer.php';?>
