@@ -59,7 +59,7 @@
         <div class="col-md-4">
             <button type="submit" class="btn btn-primary btn-block mb-1" name="update_bh">Save <i class="fa fa-check"></i></button>
                 
-            <a href="view_bhouse.php?bhouse_id=<?= $bhouse_id; ?>" class="text-dark"><button type="button" class="btn btn-outline-dark btn-block"
+            <a href="../owner/dashboard.php" class="text-dark"><button type="button" class="btn btn-outline-dark btn-block"
                     name=''>Cancel <i class="fa fa-close"></i></button></a>
         </div>
         <div class="col-md-4"></div>
