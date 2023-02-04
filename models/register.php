@@ -141,5 +141,80 @@
 
         
     }
+    if(isset($_POST['add_bed'])) {
+
+        $id = $_POST['id'];
+        $bhouse_id = $_POST['bhouse_id'];
+        $bed_no = $_POST['bed_no'];
+        $room_id = $_POST['room_id'];
+        $price = $_POST['price'];
+        $bed_status = $_POST['bed_status'];
+
+        for ($i = 0; $i < count($_POST['bhouse_id']); $i++):
+
+            // var_dump($_POST['room_id'][$i]);
+
+            $query = "INSERT INTO bed (bhouse_id, bed_no, room_id, price, bed_status) VALUES ('".$_POST['bhouse_id'][$i]."','".$_POST['bed_no'][$i]."','".$_POST['room_id'][$i]."','".$_POST['price'][$i]."','".$_POST['bed_status'][$i]."')";
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+
+                    header("location: ../owner/manage_house.php?bhouse_id=$id");
+                    // echo 'Success';
+
+            }else {
+                echo 'Error.';
+            } 
+
+        endfor;
+    }
+    if(isset($_POST['add_room_type'])) {
+
+        $id = $_POST['id'];
+        $bhouse_id = $_POST['bhouse_id'];
+        $type_name = $_POST['type_name'];
+
+        for ($i = 0; $i < count($_POST['bhouse_id']); $i++):
+
+            // var_dump($_POST['room_id'][$i]);
+
+            $query = "INSERT INTO room_type (bhouse_id, type_name) VALUES ('".$_POST['bhouse_id'][$i]."','".$_POST['type_name'][$i]."')";
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+
+                    header("location: ../owner/manage_house.php?bhouse_id=$id");
+                    // echo 'Success';
+
+            }else {
+                echo 'Error.';
+            } 
+
+        endfor;
+    }
+    if(isset($_POST['add_rules'])) {
+
+        $id = $_POST['id'];
+        $bhouse_id = $_POST['bhouse_id'];
+        $rules = $_POST['rules'];
+
+        for ($i = 0; $i < count($_POST['bhouse_id']); $i++):
+
+            // var_dump($_POST['room_id'][$i]);
+
+            $query = "INSERT INTO rules (bhouse_id, rules) VALUES ('".$_POST['bhouse_id'][$i]."','".$_POST['rules'][$i]."')";
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+
+                    header("location: ../owner/manage_house.php?bhouse_id=$id");
+                    // echo 'Success';
+
+            }else {
+                echo 'Error.';
+            } 
+
+        endfor;
+    }
 
 ?>

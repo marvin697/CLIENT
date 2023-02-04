@@ -1,65 +1,3 @@
-<!-- Large modal for  RULES-->
-<div id="rules=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Rules</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>
-                    </div>
-</div>
-</div>
-
-
-<!-- Large modal for ROOM -->
-<div id="room=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Room</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>
-                    </div>
-</div>
-</div>
-
-
 <!-- Large modal for BED -->
 <div id="bed=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -71,43 +9,49 @@
                         </button>
                     </div>
                     <div class="modal-body font-weight-bold">
-                        <form>
-                            <div class="row">
+                        <form action="../models/register.php" method="POST">
+                            <div class="row mainForm">
                                 <div class="col-md-2">
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Bed no.:</label>
-                                        <input type="number" class="form-control" name="bed_no">
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
+                                        <input type="number" class="form-control" name="bed_no[]" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Room:</label>
-                                        <input type="number" class="form-control" name="room_id">
+                                        <input type="number" class="form-control" name="room_id[]" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Price:</label>
-                                        <input type="text" class="form-control" name="price">
+                                        <input type="text" class="form-control" name="price[]" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Bed Status:</label>
-                                        <input type="text" class="form-control" name="bed_status">
+                                        <input type="text" class="form-control" name="bed_status[]" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                     <div class="form-group">
-                                        <label for="" class="col-form-label">Actions:</label>
-                                        <button type="button" class="btn btn-sm btn-outline-dark form-control"><i class="fa fa-plus"></i> Add</button>
+                                    <label for="" class="col-form-label">Actions:</label>
+                                    <div class="btn-group">
+                                        <button type="button" class="addRow btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>
                                     </div>
-                                </div>
+                                    </div>
+                               
                             </div>
+                            <div class="newRow"></div>
+
                             <!-- footer -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary" name="add_bed">Submit</button>
                             </div> 
                             <!-- End -->
                         </form>
@@ -115,5 +59,270 @@
                 </div>
 </div>
 </div>
+
+
+<!-- MODAL FOR RULES -->
+<div id="rules=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Rules</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body font-weight-bold">
+                        <form action="../models/register.php" method="POST">
+                            <div class="row roomRules">
+                                <div class="col-md-3">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Boarding House:</label>
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
+                                        <input type="text" class="form-control" value="<?php echo $bh; ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Rules:</label>
+                                        <input type="text" class="form-control" name="rules[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="" class="col-form-label">Actions:</label>
+                                    <div class="btn-group">
+                                        <button type="button" class="addRules btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="newRules"></div>
+
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="add_rules">Submit</button>
+                            </div> 
+                            <!-- End -->
+                        </form>
+                    </div>
+                </div>
+</div>
+</div>
+
+
+<!-- MODAL FOR ROOM TYPE -->
+<div id="roomType=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Room Type</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body font-weight-bold">
+                        <form action="../models/register.php" method="POST">
+                            <div class="row roomType">
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Boarding House:</label>
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
+                                        <input type="text" class="form-control" value="<?php echo $bh; ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Room Type:</label>
+                                        <input type="text" class="form-control" name="type_name[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="" class="col-form-label">Actions:</label>
+                                    <div class="btn-group">
+                                        <button type="button" class="addType btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="newRoomType"></div>
+
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="add_room_type">Submit</button>
+                            </div> 
+                            <!-- End -->
+                        </form>
+                    </div>
+                </div>
+</div>
+</div>
+
+
+<!-- MODAL FOR ROOM -->
+<div id="room=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Room</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body font-weight-bold">
+                        <form action="../models/register.php" method="POST">
+                            <div class="row roomForm">
+                                <div class="col-md-2">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Room no.:</label>
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
+                                        <input type="number" class="form-control" name="room_no[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Description:</label>
+                                        <input type="text" class="form-control" name="description[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Price:</label>
+                                        <input type="text" class="form-control" name="price[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Bed Status:</label>
+                                        <input type="text" class="form-control" name="bed_status[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="" class="col-form-label">Actions:</label>
+                                    <div class="btn-group">
+                                        <button type="button" class="addRoom btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>
+                                    </div>
+                                    </div>
+                               
+                            </div>
+                            <div class="newRoom"></div>
+
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="add_bed">Submit</button>
+                            </div> 
+                            <!-- End -->
+                        </form>
+                    </div>
+                </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document).on('click', '.removeButton', function () {
+            $(this).closest('.mainForm').remove();
+            $(this).closest('.roomType').remove();
+            $(this).closest('.roomRules').remove();
+        });
+
+        $(document).on('click', '.addRow', function () {
+            $('.newRow').append('<div class="row mainForm">\
+                                <div class="col-md-2">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Bed no.:</label>\
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">\
+                                        <input type="number" class="form-control" name="bed_no[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Room:</label>\
+                                        <input type="number" class="form-control" name="room_id[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Price:</label>\
+                                        <input type="text" class="form-control" name="price[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-4">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Bed Status:</label>\
+                                        <input type="text" class="form-control" name="bed_status[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Actions:</label>\
+                                        <div class="btn-group">\
+                                            <button type="button" class="addRow btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>\
+                                            <button type="button" class="removeButton btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>');
+        });
+        $(document).on('click', '.addRules', function () {
+            $('.newRules').append('<div class="row roomRules">\
+                            <div class="col-md-3">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Boarding House:</label>\
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">\
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">\
+                                        <input type="text" class="form-control" value="<?php echo $bh; ?>" disabled>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-7">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Rules:</label>\
+                                        <input type="text" class="form-control" name="rules[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                    <label for="" class="col-form-label">Actions:</label>\
+                                    <div class="btn-group">\
+                                        <button type="button" class="addRules btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>\
+                                        <button type="button" class="removeButton btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>\
+                                    </div>\
+                                    </div>\
+                            </div>');
+        });
+        $(document).on('click', '.addType', function () {
+            $('.newRoomType').append('<div class="row roomType">\
+                            <div class="col-md-5">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Boarding House:</label>\
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">\
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">\
+                                        <input type="text" class="form-control" value="<?php echo $bh; ?>" disabled>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-5">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Room Type:</label>\
+                                        <input type="text" class="form-control" name="type_name[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                    <label for="" class="col-form-label">Actions:</label>\
+                                    <div class="btn-group">\
+                                        <button type="button" class="addType btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>\
+                                        <button type="button" class="removeButton btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>\
+                                    </div>\
+                                    </div>\
+                            </div>');
+        });
+
+    });
+</script>
 
             
