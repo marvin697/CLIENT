@@ -172,49 +172,73 @@
                         </button>
                     </div>
                     <div class="modal-body font-weight-bold">
-                        <form action="../models/register.php" method="POST">
-                            <div class="row roomForm">
-                                <div class="col-md-2">
-                                     <div class="form-group">
-                                        <label for="" class="col-form-label">Room no.:</label>
-                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
-                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
-                                        <input type="number" class="form-control" name="room_no[]" required>
+                        <form action="../models/register.php" method="POST" enctype="multipart/form-data">
+                            <div class="Room">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Room no.:</label>
+                                            <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                            <input type="hidden" name="bhouse_id" value="<?php echo $bhouse_id; ?>">
+                                            <input type="number" class="form-control" name="room_no" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Number of Beds:</label>
+                                            <input type="number" class="form-control" name="num_bed" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Room Type:</label>
+                                            <select name="room_type" class="custom-select-md form-control mb-3" required>
+                                                <option>----</option>
+                                                <?php
+                                                    $query="SELECT * FROM room_type WHERE bhouse_id='$bhouse_id' ";
+                                                    $result= $conn->query($query);
+                                                ?>
+                                                <?php while($row = $result->fetch_row()) : ?>
+                                                    <option value="<?php echo $row[2]; ?>">
+                                                        <?php echo $row[2]; ?>
+                                                     
+                                                    </option>
+                                                <?php endwhile; ?>
+                                            </select>
+                                        </div>
+                                        
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                     <div class="form-group">
-                                        <label for="" class="col-form-label">Description:</label>
-                                        <input type="text" class="form-control" name="description[]" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Amenities:</label>
+                                            <input type="text" class="form-control" name="amenities" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Image:</label>
+                                            <input type="file" class="form-control" name="file">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                     <div class="form-group">
-                                        <label for="" class="col-form-label">Price:</label>
-                                        <input type="text" class="form-control" name="price[]" required>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Description:</label>
+                                            <textarea name="description" class="form-control" cols="10" rows="5"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                     <div class="form-group">
-                                        <label for="" class="col-form-label">Bed Status:</label>
-                                        <input type="text" class="form-control" name="bed_status[]" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="" class="col-form-label">Actions:</label>
-                                    <div class="btn-group">
-                                        <button type="button" class="addRoom btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>
-                                        <button type="button" class="btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>
-                                    </div>
-                                    </div>
-                               
-                            </div>
+                                    
+                                </div><hr>
+                            </div>    
                             <div class="newRoom"></div>
 
                             <!-- footer -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" name="add_bed">Submit</button>
+                                <button type="submit" class="btn btn-primary" name="add_room">Submit</button>
                             </div> 
                             <!-- End -->
                         </form>
@@ -222,6 +246,14 @@
                 </div>
 </div>
 </div>
+
+
+
+                                                    
+
+
+
+
 
 
 <script type="text/javascript">

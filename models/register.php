@@ -141,6 +141,73 @@
 
         
     }
+    if(isset($_POST['add_room'])) {
+
+        $id = $_POST['id'];
+        $bhouse_id = $_POST['bhouse_id'];
+
+        $room_no = $_POST['room_no'];
+        $num_bed = $_POST['num_bed'];
+        $room_type = $_POST['room_type'];
+        $description = $_POST['description'];
+        $amenities = $_POST['amenities'];
+        $file = $_FILES['file'];
+       
+
+
+
+        if($_FILES['file']['size'] == 0 ){
+
+            $query = "INSERT INTO room ( bhouse_id, room_no, description, number_of_beds, room_type_id, amenities, image ) 
+                
+                                VALUES ( '$bhouse_id', '$room_no','$description','$num_bed','$room_type','$amenities', 'room.png')";
+                
+
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+                
+                header("location: ../owner/manage_house.php?bhouse_id=$id");
+
+            }else {
+                echo 'Error.';
+            }    
+        }else{
+            //IMAGE TYPE
+            $file=$_FILES['file']['name'];
+            $tmp_name=$_FILES['file']['tmp_name'];
+            $path="../models/upload_room/" .$file;
+            $file1=explode(".",$file);
+            $ext=$file1[1];
+            $allowed=array("jpg","jpeg","png","gif","pdf","wmv");
+
+            if(in_array($ext,$allowed)){
+                move_uploaded_file($tmp_name,$path);
+
+                $query = "INSERT INTO room ( bhouse_id, room_no, description, number_of_beds, room_type_id, amenities, image ) 
+                
+                                VALUES ( '$bhouse_id', '$room_no','$description','$num_bed','$room_type','$amenities', '$file')";
+                
+
+
+                $result = mysqli_query($conn, $query);
+
+                if($result){
+
+                    header("location: ../owner/manage_house.php?bhouse_id=$id");
+
+                }else {
+                    echo 'Error.';
+                }    
+
+
+            }
+        }
+        
+        
+
+        
+    }
     if(isset($_POST['add_bed'])) {
 
         $id = $_POST['id'];
