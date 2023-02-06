@@ -147,7 +147,6 @@
         $bhouse_id = $_POST['bhouse_id'];
 
         $room_no = $_POST['room_no'];
-        $num_bed = $_POST['num_bed'];
         $room_type = $_POST['room_type'];
         $description = $_POST['description'];
         $amenities = $_POST['amenities'];
@@ -158,9 +157,9 @@
 
         if($_FILES['file']['size'] == 0 ){
 
-            $query = "INSERT INTO room ( bhouse_id, room_no, description, number_of_beds, room_type_id, amenities, image ) 
+            $query = "INSERT INTO room ( bhouse_id, room_no, description, room_type_id, amenities, image ) 
                 
-                                VALUES ( '$bhouse_id', '$room_no','$description','$num_bed','$room_type','$amenities', 'room.png')";
+                                VALUES ( '$bhouse_id', '$room_no','$description','$room_type','$amenities', 'room.png')";
                 
 
             $result = mysqli_query($conn, $query);
@@ -184,9 +183,9 @@
             if(in_array($ext,$allowed)){
                 move_uploaded_file($tmp_name,$path);
 
-                $query = "INSERT INTO room ( bhouse_id, room_no, description, number_of_beds, room_type_id, amenities, image ) 
+                $query = "INSERT INTO room ( bhouse_id, room_no, description,  room_type_id, amenities, image ) 
                 
-                                VALUES ( '$bhouse_id', '$room_no','$description','$num_bed','$room_type','$amenities', '$file')";
+                                VALUES ( '$bhouse_id', '$room_no','$description', '$room_type','$amenities', '$file')";
                 
 
 
@@ -211,6 +210,8 @@
     if(isset($_POST['add_bed'])) {
 
         $id = $_POST['id'];
+        $rm_id = $_POST['rm_id'];
+
         $bhouse_id = $_POST['bhouse_id'];
         $bed_no = $_POST['bed_no'];
         $room_id = $_POST['room_id'];
@@ -226,7 +227,7 @@
 
             if($result){
 
-                    header("location: ../owner/manage_house.php?bhouse_id=$id");
+                    header("location: ../owner/rooms.php?bhouse_id=$id&&room_id=$rm_id");
                     // echo 'Success';
 
             }else {

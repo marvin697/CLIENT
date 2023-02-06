@@ -15,6 +15,7 @@
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Bed no.:</label>
                                         <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                        <input type="hidden" name="rm_id" value="<?php echo $rm_id; ?>">
                                         <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
                                         <input type="number" class="form-control" name="bed_no[]" required>
                                     </div>
@@ -22,7 +23,8 @@
                                 <div class="col-md-2">
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Room:</label>
-                                        <input type="number" class="form-control" name="room_id[]" required>
+                                        <input type="hidden" class="form-control" name="room_id[]" value="<?php echo $rm_no; ?>">
+                                        <input type="text" class="form-control" value="<?php echo $rm_no; ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -175,7 +177,7 @@
                         <form action="../models/register.php" method="POST" enctype="multipart/form-data">
                             <div class="Room">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Room no.:</label>
                                             <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
@@ -183,13 +185,7 @@
                                             <input type="number" class="form-control" name="room_no" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="" class="col-form-label">Number of Beds:</label>
-                                            <input type="number" class="form-control" name="num_bed" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Room Type:</label>
                                             <select name="room_type" class="custom-select-md form-control mb-3" required>
@@ -260,49 +256,10 @@
     $(document).ready(function () {
 
         $(document).on('click', '.removeButton', function () {
-            $(this).closest('.mainForm').remove();
             $(this).closest('.roomType').remove();
             $(this).closest('.roomRules').remove();
         });
 
-        $(document).on('click', '.addRow', function () {
-            $('.newRow').append('<div class="row mainForm">\
-                                <div class="col-md-2">\
-                                     <div class="form-group">\
-                                        <label for="" class="col-form-label">Bed no.:</label>\
-                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">\
-                                        <input type="number" class="form-control" name="bed_no[]" required>\
-                                    </div>\
-                                </div>\
-                                <div class="col-md-2">\
-                                     <div class="form-group">\
-                                        <label for="" class="col-form-label">Room:</label>\
-                                        <input type="number" class="form-control" name="room_id[]" required>\
-                                    </div>\
-                                </div>\
-                                <div class="col-md-2">\
-                                     <div class="form-group">\
-                                        <label for="" class="col-form-label">Price:</label>\
-                                        <input type="text" class="form-control" name="price[]" required>\
-                                    </div>\
-                                </div>\
-                                <div class="col-md-4">\
-                                     <div class="form-group">\
-                                        <label for="" class="col-form-label">Bed Status:</label>\
-                                        <input type="text" class="form-control" name="bed_status[]" required>\
-                                    </div>\
-                                </div>\
-                                <div class="col-md-2">\
-                                     <div class="form-group">\
-                                        <label for="" class="col-form-label">Actions:</label>\
-                                        <div class="btn-group">\
-                                            <button type="button" class="addRow btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>\
-                                            <button type="button" class="removeButton btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>\
-                                        </div>\
-                                    </div>\
-                                </div>\
-                            </div>');
-        });
         $(document).on('click', '.addRules', function () {
             $('.newRules').append('<div class="row roomRules">\
                             <div class="col-md-3">\
