@@ -105,5 +105,24 @@
         }
 
     }
+    if(isset($_POST['update_roomType'])){
+
+        
+        $bid = $_POST['bhouse_id'];
+        $rtid = $_POST['room_type_id'];
+        $room_type = $_POST['room_type'];
+
+        $sql = mysqli_query($conn,"UPDATE room_type SET
+                                                
+                    type_name = '$room_type' 
+
+                    WHERE bhouse_id ='".$bid."' AND room_type_id='".$rtid."' ");
+
+        if($sql){
+                header("Location: ../owner/manage_house.php?bhouse_id=$bid");
+        }else {
+            echo "Error";
+        }
+    }
  
 ?>

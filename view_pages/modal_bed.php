@@ -23,7 +23,7 @@
                                 <div class="col-md-2">
                                      <div class="form-group">
                                         <label for="" class="col-form-label">Room:</label>
-                                        <input type="hidden" class="form-control" name="room_id[]" value="<?php echo $rm_no; ?>">
+                                        <input type="hidden" class="form-control" name="room_id[]" value="<?php echo $rm_id; ?>">
                                         <input type="text" class="form-control" value="<?php echo $rm_no; ?>" disabled>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                 <div class="col-md-2">\
                                      <div class="form-group">\
                                         <label for="" class="col-form-label">Room:</label>\
-                                        <input type="hidden" class="form-control" name="room_id[]" value="<?php echo $rm_no; ?>">\
+                                        <input type="hidden" class="form-control" name="room_id[]" value="<?php echo $rm_id; ?>">\
                                         <input type="text" class="form-control" value="<?php echo $rm_no; ?>" disabled>\
                                     </div>\
                                 </div>\

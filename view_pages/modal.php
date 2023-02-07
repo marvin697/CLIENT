@@ -195,7 +195,7 @@
                                                     $result= $conn->query($query);
                                                 ?>
                                                 <?php while($row = $result->fetch_row()) : ?>
-                                                    <option value="<?php echo $row[2]; ?>">
+                                                    <option value="<?php echo $row[0]; ?>">
                                                         <?php echo $row[2]; ?>
                                                      
                                                     </option>

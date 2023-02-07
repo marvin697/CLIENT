@@ -8,7 +8,13 @@
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
                     <b>ROOM NO.:</b> <span style="margin-left: 15px"><?=$rm_no;?></span><br>
-                    <b>ROOM TYPE:</b> <span style="margin-left: 15px"><?=$room_type;?></span><br>
+                    <b>ROOM TYPE:</b> <span style="margin-left: 15px">
+                                        <?php 
+                                            $get = mysqli_query($conn,"SELECT *FROM room_type WHERE room_type_id='$room_type' ");
+                                            $get_nm =mysqli_fetch_assoc($get);
+                                            echo $get_nm['type_name'];
+                                        ?>
+                    </span><br>
                     <b>Description:</b> <span style="margin-left: 15px"><?=$description;?></span><br>
                     <b>NO. OF BEDS:</b> <span style="margin-left: 15px"><?=$count_bed;?></span><br>
                     <b>Amenities:</b> <span style="margin-left: 15px"><?=$amenities;?></span><br>
@@ -61,9 +67,16 @@
                                 </div>
                                 <div class="table-responsive card" style="height:200px">
                                     <?php 
-                                        $sql = mysqli_query($conn,"SELECT * FROM bed WHERE bhouse_id ='$bhouse_id' AND room_id='$rm_no' ");
                     
-                                        if($sql->num_rows > 0):
+                                        $sql = "SELECT b.bed_id, b.bed_no, r.room_no, b.price, b.bed_status
+                                                        FROM bed AS b
+                                                        INNER JOIN room AS r
+                                                        ON r.room_id = b.room_id
+
+                                                        WHERE b.bhouse_id ='$bhouse_id' AND b.room_id='$rm_id' ";
+                                        $res =$conn->query($sql);
+
+                                        if($res->num_rows > 0):
                                     ?>
                                         <table class="table table-sm table-striped">
                                             <thead>
@@ -76,12 +89,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php while ($row = $sql->fetch_row()):?>
+                                                <?php while ($row = $res->fetch_row()):?>
                                                     <tr>
+                                                        <td><?php echo $row['1']; ?></td>
                                                         <td><?php echo $row['2']; ?></td>
                                                         <td><?php echo $row['3']; ?></td>
                                                         <td><?php echo $row['4']; ?></td>
-                                                        <td><?php echo $row['5']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button class="btn btn-sm "><i class="fa fa-edit"></i></button>

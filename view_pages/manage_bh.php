@@ -71,12 +71,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php while ($row = $sql->fetch_row()):?>
+                                                <?php while ($type = $sql->fetch_row()):?>
                                                     <tr>
-                                                        <td><?php echo $row['2']; ?></td>
+                                                        <td><?php echo $type['2']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
-                                                                <button class="btn btn-sm "><i class="fa fa-edit"></i></button>
+                                                                <?php $tbl = "roomType"; ?>
+                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&roomTypeID=<?=$type['0'];?>&&tbl=<?=$tbl;?>"><button type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button></a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -184,8 +185,16 @@
                                 </div>
                                 <div class="table-responsive card" style="height:200px">
                                     <?php 
-                                        $sql = mysqli_query($conn,"SELECT * FROM room WHERE bhouse_id ='$bhouse_id' ");
-                                        if($sql->num_rows > 0):
+                                        $sql = "SELECT r.room_id, r.bhouse_id, r.room_no, rt.type_name, r.description, r.amenities
+                                                        FROM room AS r
+                                                        INNER JOIN room_type AS rt
+                                                        ON rt.room_type_id = r.room_type_id
+
+                                                        WHERE r.bhouse_id ='$bhouse_id' ";
+
+                                        $res = $conn->query($sql);            
+
+                                        if($res->num_rows > 0):
                                     ?>
                                         <table class="table table-sm table-striped">
                                             <thead>
@@ -198,12 +207,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php while ($room = $sql->fetch_row()):?>
+                                                <?php while ($room = $res->fetch_row()):?>
                                                     <tr>
                                                         <td><?php echo $room['2']; ?></td>
-                                                        <td><?php echo $room['4']; ?></td>
                                                         <td><?php echo $room['3']; ?></td>
-                                                        <td><?php echo $room['6']; ?></td>
+                                                        <td><?php echo $room['4']; ?></td>
+                                                        <td><?php echo $room['5']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button class="btn btn-sm border-dark"><i class="fa fa-edit"></i></button>
