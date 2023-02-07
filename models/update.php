@@ -124,5 +124,47 @@
             echo "Error";
         }
     }
+    if(isset($_POST['update_rules'])){
+
+        
+        $bid = $_POST['bhouse_id'];
+        $rule_id = $_POST['rule_id'];
+        $rules = $_POST['rules'];
+
+        $sql = mysqli_query($conn,"UPDATE rules SET
+                                                
+                    rules = '$rules' 
+
+                    WHERE bhouse_id ='".$bid."' AND rule_id='".$rule_id."' ");
+
+        if($sql){
+                header("Location: ../owner/manage_house.php?bhouse_id=$bid");
+        }else {
+            echo "Error";
+        }
+    }
+    if(isset($_POST['update_room'])){
+
+        
+        $bid = $_POST['bhouse_id'];
+        $room_id = $_POST['room_id'];
+        $room_no = $_POST['room_no'];
+        $room_type = $_POST['room_type'];
+        $amenities = $_POST['amenities'];
+        $description = $_POST['description'];
+
+        $sql = mysqli_query($conn,"UPDATE room SET
+                                                
+                    room_no = '$room_no', room_type_id = '$room_type',
+                    amenities = '$amenities', description = '$description' 
+
+                    WHERE bhouse_id ='".$bid."' AND room_id='".$room_id."' ");
+
+        if($sql){
+                header("Location: ../owner/manage_house.php?bhouse_id=$bid");
+        }else {
+            echo "Error";
+        }
+    }
  
 ?>

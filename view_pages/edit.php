@@ -22,7 +22,7 @@
         <div class="">
             <a href="../owner/manage_house.php?bhouse_id=<?=$bhouse_id;?>"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
         </div>
-        <div class="card-header">
+        <div class="">
                 <img class="card-img-top" src="../models/upload_bh/<?=$img;?>" alt="Card image cap" height="250px" width="250px">
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
@@ -35,39 +35,38 @@
     </div>
     <div class="col-md-9">
         <br><br>
-        <div class="card-header">
+        <div class="">
             <div class="">
                 <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <h5><b>MANAGE BOARDING HOUSE    <span class="ml-1"> <i class="fa fa-angle-double-right"></i> 
                                                 UPDATE <?php  
-                                                            if(isset($_GET['tbl']) == 'roomType'){
-                                                                echo "ROOM TYPE";
-                                                            }else{
-                                                                echo "UNKNOWN";
+
+                                                            if(isset($_GET['tbl'])){
+
+                                                                $check = $_GET['tbl'];
+
+                                                                if($check == 'roomType'){
+                                                                    echo "ROOM TYPE";
+                                                                }elseif($check == 'rules'){
+                                                                    echo "RULES";
+                                                                }elseif($check == 'rooms'){
+                                                                    echo "ROOM";
+                                                                }else{
+                                                                    echo "";
+                                                                }
                                                             }
                                                         ?>
                             </span></b></h5>
                         </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1">
                             <div class="">
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
-                                            <span class="float-right">
-                                                    <div class="input-group">
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-plus"></i> Add</button>
-                                                            <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="#" data-target="#bed=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Bed</a>
-                                                            <!-- <a class="dropdown-item" href="#" data-target="#roomType=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Room type</a>
-                                                            <a class="dropdown-item" href="#" data-target="#room=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Room</a>
-                                                            <a class="dropdown-item" href="#" data-target="#rules=<?=$bhouse_id;?>" data-toggle="modal" data-target=".bd-example-modal-lg">Rule</a> -->
-                                                        </div>
-                                                    </div>
-                                            </span>
+                                            
                                     </div>
                                 </div>
                             </div>

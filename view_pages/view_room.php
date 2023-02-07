@@ -3,7 +3,7 @@
         <div class="">
             <a href="../owner/manage_house.php?bhouse_id=<?=$bhouse_id;?>"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
         </div>
-        <div class="card-header">
+        <div class="">
                 <img class="card-img-top" src="../models/upload_room/<?=$image;?>" alt="Card image cap" height="250px" width="250px">
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-9">
         <br><br>
-        <div class="card-header">
+        <div class="">
             <div class="">
                 <div class="row">
                         <div class="col-md-6">

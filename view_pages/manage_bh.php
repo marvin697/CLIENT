@@ -3,7 +3,7 @@
         <div class="">
             <a href="../owner/dashboard.php"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
         </div>
-        <div class="card-header">
+        <div class="">
                 <img class="card-img-top" src="../models/upload_bh/<?=$img;?>" alt="Card image cap" height="250px" width="250px">
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9">
         <br><br>
-        <div class="card-header">
+        <div class="">
             <div class="">
                 <div class="row">
                         <div class="col-md-6">
@@ -88,49 +88,6 @@
                                 </div>
                                 <?php include_once '../view_pages/modal.php'; ?>
                         </div>
-                        <!-- <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <h7><b><i class="fa fa-list"></i> BED</b></h7>
-                                    </div>
-                                    <div class="col-sm-4"></div>
-                                    <div class="col-sm-4"></div>
-                                </div>
-                                <div class="table-responsive card" style="height:200px">
-                                    <?php 
-                                        $sql = mysqli_query($conn,"SELECT * FROM bed WHERE bhouse_id ='$bhouse_id' ");
-                                        if($sql->num_rows > 0):
-                                    ?>
-                                        <table class="table table-sm table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>bed no.</th>
-                                                    <th>room no.</th>
-                                                    <th>price</th>
-                                                    <th>bed_status</th>
-                                                    <th>actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php while ($row = $sql->fetch_row()):?>
-                                                    <tr>
-                                                        <td><?php echo $row['2']; ?></td>
-                                                        <td><?php echo $row['3']; ?></td>
-                                                        <td><?php echo $row['4']; ?></td>
-                                                        <td><?php echo $row['5']; ?></td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <button class="btn btn-sm "><i class="fa fa-edit"></i></button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endwhile; ?>
-                                            </tbody>
-                                        </table>
-                                    <?php endif; ?>
-                                </div>
-                                <?php include_once '../view_pages/modal.php'; ?>
-                        </div>        -->
                         
                         <div class="col-md-8">
                                 <div class="row">
@@ -154,13 +111,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php $i=1; while ($row = $sql->fetch_row()):?>
+                                                <?php $i=1; while ($rule = $sql->fetch_row()):?>
                                                     <tr>
                                                         <td><?php echo $i++; ?></td>
-                                                        <td><?php echo $row['2']; ?></td>
+                                                        <td><?php echo $rule['2']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
-                                                                <button class="btn btn-sm "><i class="fa fa-edit"></i></button>
+                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&rule_id=<?=$rule['0'];?>&&tbl=rules"><button class="btn btn-sm "><i class="fa fa-edit"></i></button></a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -215,7 +172,7 @@
                                                         <td><?php echo $room['5']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
-                                                                <button class="btn btn-sm border-dark"><i class="fa fa-edit"></i></button>
+                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room['0'];?>&&tbl=rooms"><button class="btn btn-sm border-dark"><i class="fa fa-edit"></i></button></a>
                                                                 <a href="../owner/rooms.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room['0'];?>"><button class="btn btn-sm border-dark"><i class="fa fa-angle-double-right"></i></button></a>
                                                             </div>
                                                         </td>
