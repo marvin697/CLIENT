@@ -85,7 +85,7 @@
                 break; 
             case "rooms":
         ?>
-                    <!-- RULES -->
+                    <!-- ROOMS -->
                     <div class="">
                         <div class="alert " role="alert">
                             <h2 class="text-center"><i class="fa fa-"></i></h2>
@@ -140,6 +140,94 @@
                                     <div class="col-md-5"></div>
                                     <div class="col-md-2">
                                         <button type="submit" class="btn btn-primary btn-block mb-1"  name="update_room">
+                                            Save <i class="fa fa-check"></i></button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        <?php 
+                break;
+            case "images": 
+        ?>
+                    <!-- IMAGE -->
+                    <div class="">
+                        <div class="alert " role="alert">
+                            <h2 class="text-center"><i class="fa fa-"></i></h2>
+                            <form id="form" action="../models/update.php" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="fullname"><b> ROOM NO. </b></label>
+                                            <input type="hidden" name="bhouse_id" value="<?php echo $bhouse_id; ?>">
+                                            <input type="hidden" name="room_id" value="<?php echo $room_id; ?>">
+                                            <input type="text" class="form-control" value="<?= $room_no; ?>" disabled>
+                                                
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="fullname"><b>UPLOAD FILE </b></label>
+                                            <input type="file" class="form-control" name="file" required>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary btn-block mb-1" id="register_user" name="update_image">
+                                            Save <i class="fa fa-check"></i></button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        <?php 
+                break; 
+            case "bed":
+        ?>
+                    <!-- BED -->
+                    <div class="">
+                        <div class="alert " role="alert">
+                            <h2 class="text-center"><i class="fa fa-"></i></h2>
+                            <form id="form" action="../models/update.php" method="post" enctype="multipart/form-data">
+                                <div class="row text-uppercase font-weight-bold">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Bed no.:</label>
+                                            <input type="hidden" name="bhouseID" value="<?php echo $bhouse_id; ?>">
+                                            <input type="hidden" name="roomID" value="<?php echo $roomID; ?>">
+                                            <input type="hidden" name="bedID" value="<?php echo $bed_id; ?>">
+
+                                            <input type="number" class="form-control" name="bed_no" value="<?php echo $bed_no; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                        <label for="" class="col-form-label">Price:</label>
+                                            <input type="number" class="form-control" name="price" value="<?php echo $price; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                        <label for="" class="col-form-label">Bed Status:</label>
+                                            <input type="text" class="form-control" name="bed_status" value="<?php echo $bed_status; ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div> 
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary btn-block mb-1"  name="update_bed">
                                             Save <i class="fa fa-check"></i></button>
                                     </div>
                                     

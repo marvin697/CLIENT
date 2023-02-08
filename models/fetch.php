@@ -12,6 +12,44 @@ if(isset($_GET['roomTypeID']) && isset($_GET['bhouse_id'])){
     $name_type = $row3['type_name'];
 } 
 
+if(isset($_GET['bed_id']) && isset($_GET['bhouse_id']) && isset($_GET['roomID'])){
+
+    $bed_id = $_GET['bed_id'];
+    $bhouse_id = $_GET['bhouse_id'];
+    $roomID = $_GET['roomID'];
+    
+    //bed table
+    $sql = "SELECT b.bed_id, b.bed_no, r.room_no, b.price, b.bed_status, b.room_id
+                    FROM bed AS b
+                    INNER JOIN room AS r
+                    ON r.room_id = b.room_id
+
+                    WHERE b.bhouse_id ='$bhouse_id' AND b.room_id='$roomID' AND b.bed_id ='$bed_id' ";
+    $res =$conn->query($sql);
+    $row = mysqli_fetch_array($res);
+
+    $bed_id = $row['bed_id'];
+    $bed_no = $row['bed_no'];
+    $room_no = $row['room_no'];
+    $room_bed_id = $row['room_id'];
+    $price = $row['price'];
+    $bed_status = $row['bed_status'];
+
+
+    $sql2 = mysqli_query($conn,"SELECT *FROM room WHERE bhouse_id ='$bhouse_id' AND room_id='$roomID'  ");
+    $row2 = mysqli_fetch_array($sql2);
+
+    $rm_id = $row2['room_id'];
+    $rm_no = $row2['room_no'];
+    $description = $row2['description'];
+    $room_type = $row2['room_type_id'];
+    $amenities = $row2['amenities'];
+    $image = $row2['image'];
+
+    $sql = mysqli_query($conn,"SELECT * FROM bed WHERE bhouse_id ='$bhouse_id' AND room_id='$rm_no' ");
+    $count_bed = mysqli_num_rows($sql);
+} 
+
 if(isset($_GET['rule_id']) && isset($_GET['bhouse_id'])){
 
     $rule_id = $_GET['rule_id'];

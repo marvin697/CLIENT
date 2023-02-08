@@ -1,5 +1,7 @@
 <?php 
-     if(isset($_GET['bhouse_id']) && isset($_GET['tbl'])){
+    include_once '../models/fetch.php';
+
+    if(isset($_GET['bhouse_id']) && isset($_GET['tbl'])){
         $bhouse_id = $_GET['bhouse_id'];
         $tbl = $_GET['tbl'];
 
@@ -12,24 +14,30 @@
         $loc = $row['location'];
         $ame = $row['amenities'];
         $img = $row['image'];
-        $added_user = $row['user_id'];
-        
-        
-    }     
+        $added_user = $row['user_id'];  
+    }   
+      
 ?>
 <div class="row">
     <div class="col-md-3">
         <div class="">
-            <a href="../owner/manage_house.php?bhouse_id=<?=$bhouse_id;?>"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
+            <a href="../owner/rooms.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room_bed_id;?>"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
         </div>
         <div class="">
-                <img class="card-img-top" src="../models/upload_bh/<?=$img;?>" alt="Card image cap" height="250px" width="250px">
+                <img class="card-img-top" src="../models/upload_room/<?=$image;?>" alt="Card image cap" height="250px" width="250px">
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
-                    <b>BH NAME:</b> <span style="margin-left: 15px"><?=$bh;?></span><br>
-                    <b>Location:</b> <span style="margin-left: 15px"><?=$loc;?></span><br>
-                    <b>Description:</b> <span style="margin-left: 15px"><?=$desc;?></span><br>
-                    <b>Amenities:</b> <span style="margin-left: 15px"><?=$ame;?></span><br>
+                    <b>ROOM NO.:</b> <span style="margin-left: 15px"><?=$rm_no;?></span><br>
+                    <b>ROOM TYPE:</b> <span style="margin-left: 15px">
+                                        <?php 
+                                            $get = mysqli_query($conn,"SELECT *FROM room_type WHERE room_type_id='$room_type' ");
+                                            $get_nm =mysqli_fetch_assoc($get);
+                                            echo $get_nm['type_name'];
+                                        ?>
+                    </span><br>
+                    <b>Description:</b> <span style="margin-left: 15px"><?=$description;?></span><br>
+                    <b>NO. OF BEDS:</b> <span style="margin-left: 15px"><?=$count_bed;?></span><br>
+                    <b>Amenities:</b> <span style="margin-left: 15px"><?=$amenities;?></span><br>
                 </span><br>
         </div>
     </div>
@@ -39,7 +47,7 @@
             <div class="">
                 <div class="row">
                         <div class="col-md-10">
-                            <h5><b>MANAGE BOARDING HOUSE    <span class="ml-1"> <i class="fa fa-angle-double-right"></i> 
+                            <h5><b>MANAGE BOARDING HOUSE  <span class="ml-1"> <i class="fa fa-angle-double-right"></i> ROOM <?=$room_no;?></span>  <span class="ml-1"> <i class="fa fa-angle-double-right"></i> 
                                                 UPDATE <?php  
 
                                                             if(isset($_GET['tbl'])){

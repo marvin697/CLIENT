@@ -89,15 +89,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php while ($row = $res->fetch_row()):?>
+                                                <?php while ($bed = $res->fetch_row()):?>
                                                     <tr>
-                                                        <td><?php echo $row['1']; ?></td>
-                                                        <td><?php echo $row['2']; ?></td>
-                                                        <td><?php echo $row['3']; ?></td>
-                                                        <td><?php echo $row['4']; ?></td>
+                                                        <td><?php echo $bed['1']; ?></td>
+                                                        <td><?php echo $bed['2']; ?></td>
+                                                        <td><?php echo $bed['3']; ?></td>
+                                                        <td><?php echo $bed['4']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
-                                                                <button class="btn btn-sm "><i class="fa fa-edit"></i></button>
+                                                                <a href="../owner/edit_bedroom.php?bhouse_id=<?=$bhouse_id;?>&&roomID=<?=$rm_id;?>&&bed_id=<?=$bed['0'];?>&&tbl=bed"><button class="btn btn-sm "><i class="fa fa-edit"></i></button></a>
                                                             </div>
                                                         </td>
                                                     </tr>

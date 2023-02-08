@@ -20,7 +20,7 @@
 
 
             if($_SESSION['status'] == 1 ){
-                $_SESSION['msg'] = "<center style='color:red;font-size:20px'>Account Deactivated! Please contact your administrator, thank you.</center>";
+                $_SESSION['msg'] = "<center style='color:red;font-size:20px'><div class='card-header'>Account Deactivated! Please contact your administrator, thank you.</div></center>";
                 header('location: ../login.php');
             }else {
                 if ($_SESSION['role'] == 'admin') {
@@ -31,7 +31,7 @@
                 
             }
         }else{
-            $_SESSION['msg'] = "<center style='color:red;font-size:20px'>Incorrect Username or Password.</center>";
+            $_SESSION['msg'] = "<center style='color:red;font-size:20px'><div class='card-header'>Incorrect Username or Password.</div></center>";
             header('location: ../login.php');
         }
     }

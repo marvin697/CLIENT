@@ -205,15 +205,15 @@
                                             <table>
                                                 <tbody>
 
-                                                    <?php while($row = $sql->fetch_row()): ?>
+                                                    <?php while($img = $sql->fetch_row()): ?>
                                                     
                                                         <li id="list" class="list-group-item  mr-4 mb-4">
                                                                 <div class="" style="width: 16rem;">
-                                                                    <span class="text-center text-uppercase"><b>ROOM <?=$row['2'];?>
-                                                                    <span class="float-right"><a href="../owner/edit_bh.php?bhouse_id=<?=$row['0'];?>" type="button" > <i class="fa fa-edit text-dark "></i></a></span>
+                                                                    <span class="text-center text-uppercase"><b>ROOM <?=$img['2'];?>
+                                                                    <span class="float-right"><a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$img['0'];?>&&tbl=images" type="button" > <i class="fa fa-edit text-dark "></i></a></span>
                                                                     </b></span><br>
                                                                     <hr style="border: 2px solid #0a0a0a;">
-                                                                    <img class="card-img-top" src="../models/upload_room/<?=$row['5'];?>" alt="Card image cap" height="250px" width="250px">
+                                                                    <img class="card-img-top" src="../models/upload_room/<?=$img['5'];?>" alt="Card image cap" height="250px" width="250px">
                                                                 </div>
                                                         </li>
                                                     <?php endwhile;?>    

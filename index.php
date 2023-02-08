@@ -33,14 +33,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
-           
+
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#search">Search</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Login</a>
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="register.php">Register</a>
             </li>
@@ -168,7 +169,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <span class="copyright">Created By Devs</span>
+            <span class="copyright"></span>
           </div>
           <div class="col-md-4">
             <ul class="list-inline social-buttons">
