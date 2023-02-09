@@ -54,6 +54,8 @@
                                                                     echo "IMAGE";
                                                                 }elseif($check == 'bed'){
                                                                     echo "BED";
+                                                                }elseif($check == 'amenities'){
+                                                                    echo "AMENITIES";
                                                                 }else{
                                                                     echo "";
                                                                 }

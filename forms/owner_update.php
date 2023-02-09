@@ -230,11 +230,64 @@
                         </div>
                     </div>
         <?php 
+                break;
+            case "amenities" 
+        ?>
+                    <!-- AMENITIES -->
+                    <div class="">
+                        <div class="alert " role="alert">
+                            <h2 class="text-center"><i class="fa fa-"></i></h2>
+                            <form id="form" action="../models/update.php" method="post" enctype="multipart/form-data">
+                                <div class="row text-uppercase font-weight-bold">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Place offer:</label>
+                                            <input type="hidden" name="bhouseID" value="<?php echo $bhouse_id; ?>">
+                                            <input type="hidden" name="ame_id" value="<?php echo $ame_id; ?>">
+
+                                            <select name="place_offer" class="custom-select">
+                                                <option value="<?=$place_offer;?>"><?=$place_offer;?></option>
+                                                <option value="bathroom">Bathroom</option>
+                                                <option value="bedroom_and_laudry">Bedroom and laundry</option>
+                                                <option value="heating_and_cooling">Heating and Cooling</option>
+                                                <option value="kitchen_and_dining">Kitchen and dining</option>
+                                                <option value="location_features">Location features</option>
+                                                <option value="indoor">Indoor</option>
+                                                <option value="outdoor">Outdoor</option>
+                                                <option value="parking_and_facilities">Parking and facilities</option>
+                                                <option value="services">Services</option>
+                                                <option value="not_included">Not included</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Amenities:</label>
+                                            <input type="text" class="form-control" name="amenities" value="<?=$getAmenities;?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div> 
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary btn-block mb-1"  name="update_amenities">
+                                            Save <i class="fa fa-check"></i></button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        <?php 
                 break; 
         ?>
         <!-- DEFAULT -->
         <?php default:
-                echo "NO FORM";
+                echo "";
                 break;
     }
 ?>

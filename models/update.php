@@ -104,6 +104,26 @@
         }
 
     }
+    if(isset($_POST['update_amenities'])){
+
+        
+        $bid = $_POST['bhouseID'];
+        $ame_id = $_POST['ame_id'];
+        $place_offer = $_POST['place_offer'];
+        $amenities = $_POST['amenities'];
+
+        $sql = mysqli_query($conn,"UPDATE amenities SET
+                                                
+                    place_offer = '$place_offer', amenities = '$amenities' 
+
+                    WHERE bhouse_id ='".$bid."' AND ame_id='".$ame_id."' ");
+
+        if($sql){
+                header("Location: ../owner/manage_house.php?bhouse_id=$bid");
+        }else {
+            echo "Error";
+        }
+    }
     if(isset($_POST['update_roomType'])){
 
         

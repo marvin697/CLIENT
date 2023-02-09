@@ -1,5 +1,18 @@
 <?php 
 
+if(isset($_GET['amenities_id']) && isset($_GET['bhouse_id'])){
+
+    $ame_id = $_GET['amenities_id'];
+    $bhouse_id = $_GET['bhouse_id'];
+    
+    //amenities table
+    $sql3 = mysqli_query($conn,"SELECT *FROM amenities WHERE bhouse_id ='$bhouse_id' AND ame_id='$ame_id'  ");
+    $row3 = mysqli_fetch_array($sql3);
+
+    $place_offer = $row3['place_offer'];
+    $getAmenities = $row3['amenities'];
+
+} 
 if(isset($_GET['roomTypeID']) && isset($_GET['bhouse_id'])){
 
     $room_type_id = $_GET['roomTypeID'];

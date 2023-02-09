@@ -48,182 +48,214 @@
                 </div>   
             </div> <hr style="border: 2px solid #0a0a0a;">
             <div class="">
-                <div class="row">
-                        <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h7><b><i class="fa fa-list"></i> AMENITIES</b></h7>
-                                    </div>
-                                    <div class="col-sm-2"></div>
-                                    <div class="col-sm-2"></div>
-                                </div>
-                                <div class="table-responsive card" style="height:200px">
-                                    <?php 
-                                        $sql = mysqli_query($conn,"SELECT * FROM amenities WHERE bhouse_id ='$bhouse_id' ORDER BY place_offer ASC ");
-                                        if($sql->num_rows > 0):
-                                    ?>
-                                        <table class="table table-sm table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>place offer</th>
-                                                    <th>amenities</th>
-                                                    <th>actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php while ($type = $sql->fetch_row()):?>
-                                                    <tr>
-                                                        <td><?php echo $type['2']; ?></td>
-                                                        <td><?php echo $type['3']; ?></td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <?php $tbl = "roomType"; ?>
-                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&roomTypeID=<?=$type['0'];?>&&tbl=<?=$tbl;?>"><button type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endwhile; ?>
-                                            </tbody>
-                                        </table>
-                                    <?php endif; ?>
-                                </div>
-                                <?php include_once '../view_pages/modal.php'; ?>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link text-dark active" id="nav-room-tab" data-toggle="tab" href="#nav-room" role="tab" aria-controls="nav-room" aria-selected="true">Room</a>
+                            <a class="nav-item nav-link text-dark" id="nav-roomType-tab" data-toggle="tab" href="#nav-roomType" role="tab" aria-controls="nav-roomType" aria-selected="true">Room Type</a>
+                            <a class="nav-item nav-link text-dark" id="nav-rules-tab" data-toggle="tab" href="#nav-rules" role="tab" aria-controls="nav-rules" aria-selected="false">Rules</a>
+                            <a class="nav-item nav-link text-dark" id="nav-amenities-tab" data-toggle="tab" href="#nav-amenities" role="tab" aria-controls="nav-amenities" aria-selected="false">Amenities</a>
                         </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-room" role="tabpanel" aria-labelledby="nav-room-tab">
                         
-                        <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <h7><b><i class="fa fa-list"></i> RULES</b></h7>
+                        <div class="mt-4">
+                            <div class="row">
+                                    <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <h7><b><i class="fa fa-list"></i> ROOM</b></h7>
+                                                </div>
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-4"></div>
+                                            </div>
+                                            <div class="table-responsive card" style="height:200px">
+                                                <?php 
+                                                    $sql = "SELECT r.room_id, r.bhouse_id, r.room_no, rt.type_name, r.description, r.amenities
+                                                                    FROM room AS r
+                                                                    INNER JOIN room_type AS rt
+                                                                    ON rt.room_type_id = r.room_type_id
+
+                                                                    WHERE r.bhouse_id ='$bhouse_id' ";
+
+                                                    $res = $conn->query($sql);            
+
+                                                    if($res->num_rows > 0):
+                                                ?>
+                                                    <table class="table table-sm table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>room_no.</th>
+                                                                <th>room_type</th>
+                                                                <th>description</th>
+                                                                <th>actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php while ($room = $res->fetch_row()):?>
+                                                                <tr>
+                                                                    <td><?php echo $room['2']; ?></td>
+                                                                    <td><?php echo $room['3']; ?></td>
+                                                                    <td><?php echo $room['4']; ?></td>
+                                                                    <td>
+                                                                        <div class="btn-group">
+                                                                            <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room['0'];?>&&tbl=rooms"><button class="btn btn-sm border-dark"><i class="fa fa-edit"></i></button></a>
+                                                                            <a href="../owner/rooms.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room['0'];?>"><button class="btn btn-sm border-dark"><i class="fa fa-angle-double-right"></i></button></a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endwhile; ?>
+                                                        </tbody>
+                                                    </table>
+                                                <?php endif; ?>
+                                            </div>
+                                            <?php include_once '../view_pages/modal.php'; ?>
                                     </div>
-                                    <div class="col-sm-4"></div>
-                                    <div class="col-sm-4"></div>
-                                </div>
-                                <div class="table-responsive card" style="height:200px">
-                                    <?php 
-                                        $sql = mysqli_query($conn,"SELECT * FROM rules WHERE bhouse_id ='$bhouse_id' ");
-                                        if($sql->num_rows > 0):
-                                    ?>
-                                        <table class="table table-sm table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>no.</th>
-                                                    <th>rules</th>
-                                                    <th>actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $i=1; while ($rule = $sql->fetch_row()):?>
-                                                    <tr>
-                                                        <td><?php echo $i++; ?></td>
-                                                        <td><?php echo $rule['2']; ?></td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&rule_id=<?=$rule['0'];?>&&tbl=rules"><button class="btn btn-sm "><i class="fa fa-edit"></i></button></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endwhile; ?>
-                                            </tbody>
-                                        </table>
-                                    <?php endif; ?>
-                                </div>
-                                <?php include_once '../view_pages/modal.php'; ?>
-                        </div>       
-                </div>   
-            </div><br>
-            <div class="">
-                <div class="row">
-                        <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h7><b><i class="fa fa-list"></i> ROOM TYPE</b></h7>
+                            </div>   
+                        </div><br>
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-roomType" role="tabpanel" aria-labelledby="nav-roomType-tab">
+                        
+                        <div class="mt-4">
+                            <div class="row">
+                                    <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <h7><b><i class="fa fa-list"></i> ROOM TYPE</b></h7>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2"></div>
+                                            </div>
+                                            <div class="table-responsive card" style="height:200px">
+                                                <?php 
+                                                    $sql = mysqli_query($conn,"SELECT * FROM room_type WHERE bhouse_id ='$bhouse_id' ");
+                                                    if($sql->num_rows > 0):
+                                                ?>
+                                                    <table class="table table-sm table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>room_type</th>
+                                                                <th>actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php while ($type = $sql->fetch_row()):?>
+                                                                <tr>
+                                                                    <td><?php echo $type['2']; ?></td>
+                                                                    <td>
+                                                                        <div class="btn-group">
+                                                                            <?php $tbl = "roomType"; ?>
+                                                                            <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&roomTypeID=<?=$type['0'];?>&&tbl=<?=$tbl;?>"><button type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button></a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endwhile; ?>
+                                                        </tbody>
+                                                    </table>
+                                                <?php endif; ?>
+                                            </div>
+                                            <?php include_once '../view_pages/modal.php'; ?>
                                     </div>
-                                    <div class="col-sm-2"></div>
-                                    <div class="col-sm-2"></div>
-                                </div>
-                                <div class="table-responsive card" style="height:200px">
-                                    <?php 
-                                        $sql = mysqli_query($conn,"SELECT * FROM room_type WHERE bhouse_id ='$bhouse_id' ");
-                                        if($sql->num_rows > 0):
-                                    ?>
-                                        <table class="table table-sm table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>room_type</th>
-                                                    <th>actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php while ($type = $sql->fetch_row()):?>
-                                                    <tr>
-                                                        <td><?php echo $type['2']; ?></td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <?php $tbl = "roomType"; ?>
-                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&roomTypeID=<?=$type['0'];?>&&tbl=<?=$tbl;?>"><button type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endwhile; ?>
-                                            </tbody>
-                                        </table>
-                                    <?php endif; ?>
-                                </div>
-                                <?php include_once '../view_pages/modal.php'; ?>
-                        </div>
+                            </div>   
+                        </div><br>                                      
 
-                        <div class="col-md-6">
+                    </div>
+                    <div class="tab-pane fade" id="nav-rules" role="tabpanel" aria-labelledby="nav-rules-tab">
+                        
+                            <div class="mt-4">
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <h7><b><i class="fa fa-list"></i> ROOM</b></h7>
-                                    </div>
-                                    <div class="col-sm-4"></div>
-                                    <div class="col-sm-4"></div>
-                                </div>
-                                <div class="table-responsive card" style="height:200px">
-                                    <?php 
-                                        $sql = "SELECT r.room_id, r.bhouse_id, r.room_no, rt.type_name, r.description, r.amenities
-                                                        FROM room AS r
-                                                        INNER JOIN room_type AS rt
-                                                        ON rt.room_type_id = r.room_type_id
+                                        <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <h7><b><i class="fa fa-list"></i> RULES</b></h7>
+                                                    </div>
+                                                    <div class="col-sm-4"></div>
+                                                    <div class="col-sm-4"></div>
+                                                </div>
+                                                <div class="table-responsive card" style="height:200px">
+                                                    <?php 
+                                                        $sql = mysqli_query($conn,"SELECT * FROM rules WHERE bhouse_id ='$bhouse_id' ");
+                                                        if($sql->num_rows > 0):
+                                                    ?>
+                                                        <table class="table table-sm table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>no.</th>
+                                                                    <th>rules</th>
+                                                                    <th>actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php $i=1; while ($rule = $sql->fetch_row()):?>
+                                                                    <tr>
+                                                                        <td><?php echo $i++; ?></td>
+                                                                        <td><?php echo $rule['2']; ?></td>
+                                                                        <td>
+                                                                            <div class="btn-group">
+                                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&rule_id=<?=$rule['0'];?>&&tbl=rules"><button class="btn btn-sm "><i class="fa fa-edit"></i></button></a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endwhile; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <?php include_once '../view_pages/modal.php'; ?>
+                                        </div>       
+                                </div>   
+                            </div><br>                                             
 
-                                                        WHERE r.bhouse_id ='$bhouse_id' ";
-
-                                        $res = $conn->query($sql);            
-
-                                        if($res->num_rows > 0):
-                                    ?>
-                                        <table class="table table-sm table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>room_no.</th>
-                                                    <th>room_type</th>
-                                                    <th>description</th>
-                                                    <th>actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php while ($room = $res->fetch_row()):?>
-                                                    <tr>
-                                                        <td><?php echo $room['2']; ?></td>
-                                                        <td><?php echo $room['3']; ?></td>
-                                                        <td><?php echo $room['4']; ?></td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room['0'];?>&&tbl=rooms"><button class="btn btn-sm border-dark"><i class="fa fa-edit"></i></button></a>
-                                                                <a href="../owner/rooms.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$room['0'];?>"><button class="btn btn-sm border-dark"><i class="fa fa-angle-double-right"></i></button></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endwhile; ?>
-                                            </tbody>
-                                        </table>
-                                    <?php endif; ?>
-                                </div>
-                                <?php include_once '../view_pages/modal.php'; ?>
-                        </div>
-                </div>   
-            </div><br>
+                                                                
+                    </div>
+                    <div class="tab-pane fade" id="nav-amenities" role="tabpanel" aria-labelledby="nav-amenities-tab">
+                            
+                            <div class="mt-4">
+                                <div class="row">
+                                        <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <h7><b><i class="fa fa-list"></i> AMENITIES</b></h7>
+                                                    </div>
+                                                    <div class="col-sm-2"></div>
+                                                    <div class="col-sm-2"></div>
+                                                </div>
+                                                <div class="table-responsive card" style="height:200px">
+                                                    <?php 
+                                                        $sql = mysqli_query($conn,"SELECT * FROM amenities WHERE bhouse_id ='$bhouse_id' ORDER BY place_offer ASC ");
+                                                        if($sql->num_rows > 0):
+                                                    ?>
+                                                        <table class="table table-sm table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>place offer</th>
+                                                                    <th>amenities</th>
+                                                                    <th>actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php while ($ame = $sql->fetch_row()):?>
+                                                                    <tr>
+                                                                        <td><?php echo $ame['2']; ?></td>
+                                                                        <td><?php echo $ame['3']; ?></td>
+                                                                        <td>
+                                                                            <div class="btn-group">
+                                                                                <a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&amenities_id=<?=$ame['0'];?>&&tbl=amenities"><button type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button></a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endwhile; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <?php include_once '../view_pages/modal.php'; ?>
+                                        </div>
+                                </div>   
+                            </div><br>                                          
+                    </div>
+            </div>
             <div class="">
                 <div class="row">
                         <div class="col-md-12">
@@ -245,7 +277,7 @@
 
                                                     <?php while($img = $sql->fetch_row()): ?>
                                                     
-                                                        <li id="list" class="list-group-item  mr-4 mb-4">
+                                                        <li  class="list-group-item  mr-4 mb-4 w3-card">
                                                                 <div class="" style="width: 16rem;">
                                                                     <span class="text-center text-uppercase"><b>ROOM <?=$img['2'];?>
                                                                     <span class="float-right"><a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$img['0'];?>&&tbl=images" type="button" > <i class="fa fa-edit text-dark "></i></a></span>
@@ -264,7 +296,6 @@
                         </div>
                 </div>   
             </div>
-            
         </div>    
         
     </div>

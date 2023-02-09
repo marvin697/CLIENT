@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2023 at 10:07 AM
+-- Generation Time: Feb 09, 2023 at 10:01 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `newrent`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `amenities`
+--
+
+CREATE TABLE `amenities` (
+  `ame_id` int(11) NOT NULL,
+  `bhouse_id` varchar(20) NOT NULL,
+  `place_offer` varchar(100) NOT NULL,
+  `amenities` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amenities`
+--
+
+INSERT INTO `amenities` (`ame_id`, `bhouse_id`, `place_offer`, `amenities`) VALUES
+(1, '2', 'bathroom', 'free soap'),
+(2, '2', 'location_features', 'free wifi'),
+(3, '2', 'kitchen_and_dining', 'free glass, plates.'),
+(4, '2', 'parking_and_facilities', 'free parking on premises');
 
 -- --------------------------------------------------------
 
@@ -42,15 +65,7 @@ CREATE TABLE `bed` (
 --
 
 INSERT INTO `bed` (`bed_id`, `bhouse_id`, `bed_no`, `room_id`, `price`, `bed_status`, `bed_added`) VALUES
-(27, '2', '1', '202', '1000', 'vacant', '2023-02-04 08:32:50'),
-(28, '2', '2', '203', '1000', 'vacant', '2023-02-04 08:32:50'),
-(29, '2', '3', '204', '1000', 'vacant', '2023-02-04 08:32:50'),
-(30, '2', '5', '206', '1000', 'vacant', '2023-02-04 08:35:04'),
-(31, '2', '6', '207', '1000', 'vacant', '2023-02-04 08:35:04'),
-(32, '2', '7', '208', '1000', 'vacant', '2023-02-04 09:12:49'),
-(33, '2', '8', '209', '1000', 'vacant', '2023-02-04 09:12:49'),
-(34, '2', '9', '210', '1000', 'vacant', '2023-02-04 09:33:10'),
-(35, '2', '10', '211', '1000', 'vacant', '2023-02-04 09:33:10');
+(57, '2', '1', '13', '1500', 'vacant', '2023-02-08 12:13:45');
 
 -- --------------------------------------------------------
 
@@ -63,7 +78,6 @@ CREATE TABLE `boarding_house` (
   `bhouse_name` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `location` varchar(255) NOT NULL,
-  `amenities` varchar(60) NOT NULL,
   `image` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `bh_added` datetime NOT NULL DEFAULT current_timestamp()
@@ -73,10 +87,9 @@ CREATE TABLE `boarding_house` (
 -- Dumping data for table `boarding_house`
 --
 
-INSERT INTO `boarding_house` (`bhouse_id`, `bhouse_name`, `description`, `location`, `amenities`, `image`, `user_id`, `bh_added`) VALUES
-(2, 'Rodriguez', 'atbang sa nmsc', 'Labuyo, Tangub City', 'aa', 'house.png', 14, '2023-01-28 22:47:36'),
-(11, 'Pink', 'atbang sa nmsc', 'Labuyo, Tangub City', 'cxxcaa', 'house.png', 14, '2023-02-02 15:26:27'),
-(18, 'GRAY', 'dsd', 'Likod sa blue house', 'jhghgj', 'house.png', 14, '2023-02-03 16:08:39');
+INSERT INTO `boarding_house` (`bhouse_id`, `bhouse_name`, `description`, `location`, `image`, `user_id`, `bh_added`) VALUES
+(2, 'Rodriguez', 'atbang sa nmsc', 'Labuyo, Tangub City', 'house.png', 14, '2023-01-28 22:47:36'),
+(23, 'sd', 'dss', 'Maloro, Tangub City', 'house.png', 14, '2023-02-08 22:05:46');
 
 -- --------------------------------------------------------
 
@@ -156,8 +169,7 @@ CREATE TABLE `room` (
   `bhouse_id` int(20) NOT NULL,
   `room_no` varchar(20) NOT NULL,
   `description` text NOT NULL,
-  `number_of_beds` varchar(50) NOT NULL,
-  `room_type_id` varchar(50) NOT NULL,
+  `room_type_id` int(20) NOT NULL,
   `image` varchar(200) NOT NULL,
   `amenities` varchar(60) NOT NULL,
   `room_added` datetime NOT NULL DEFAULT current_timestamp()
@@ -167,9 +179,9 @@ CREATE TABLE `room` (
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`room_id`, `bhouse_id`, `room_no`, `description`, `number_of_beds`, `room_type_id`, `image`, `amenities`, `room_added`) VALUES
-(6, 2, '201', 'asa', '2', 'aa', 'mar enroll.png', 'sasa', '2023-02-05 16:30:47'),
-(7, 2, '202', 'fdfd', '2', 'bb', 'room.png', 'as', '2023-02-05 16:41:31');
+INSERT INTO `room` (`room_id`, `bhouse_id`, `room_no`, `description`, `room_type_id`, `image`, `amenities`, `room_added`) VALUES
+(13, 2, '201', 'sdsdddsddddddddd', 13, 'room.png', '', '2023-02-08 12:07:24'),
+(14, 2, '202', 'sas', 13, 'room.png', '', '2023-02-09 11:37:06');
 
 -- --------------------------------------------------------
 
@@ -188,10 +200,8 @@ CREATE TABLE `room_type` (
 --
 
 INSERT INTO `room_type` (`room_type_id`, `bhouse_id`, `type_name`) VALUES
-(1, '2', 'a'),
-(2, '2', 'a'),
-(3, '2', 'aa'),
-(4, '2', 'bb');
+(12, '2', 'ab'),
+(13, '2', 'bc');
 
 -- --------------------------------------------------------
 
@@ -210,10 +220,8 @@ CREATE TABLE `rules` (
 --
 
 INSERT INTO `rules` (`rule_id`, `bhouse_id`, `rules`) VALUES
-(1, 2, 'bawal mag inom'),
-(2, 2, 'bawal mag sigarilyo'),
-(3, 2, 'no outside person/s allowed inside the room'),
-(4, 2, 'bawal mag jowa');
+(11, 2, 'asssssssss'),
+(12, 2, 'addddddd');
 
 -- --------------------------------------------------------
 
@@ -245,6 +253,12 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `fullname`, `contact`, `e
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `amenities`
+--
+ALTER TABLE `amenities`
+  ADD PRIMARY KEY (`ame_id`);
 
 --
 -- Indexes for table `bed`
@@ -296,7 +310,8 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `room`
   ADD PRIMARY KEY (`room_id`),
-  ADD KEY `roomtype_fk` (`room_no`);
+  ADD KEY `roomtype_fk` (`room_no`),
+  ADD KEY `room_type_id` (`room_type_id`);
 
 --
 -- Indexes for table `room_type`
@@ -322,16 +337,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `amenities`
+--
+ALTER TABLE `amenities`
+  MODIFY `ame_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `bed`
 --
 ALTER TABLE `bed`
-  MODIFY `bed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `bed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `boarding_house`
 --
 ALTER TABLE `boarding_house`
-  MODIFY `bhouse_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `bhouse_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -361,25 +382,25 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `room_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `room_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rules`
 --
 ALTER TABLE `rules`
-  MODIFY `rule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
