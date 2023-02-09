@@ -77,8 +77,8 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input class="w3-input w3-border w3-round-large" id="keywords" name="keywords" type="text" placeholder="Search...">
-                      <b><i class="fa fa-search float-right mr-3 " style="margin-top: -29px;font-size:20px; color:gray;"></i></b>
+                    <input class="w3-input w3-border w3-round-large" id="keywords" name="keywords" type="text" placeholder="Search..." style="height: 50px; margin-top: -34px;">
+                      <b><i class="fa fa-search float-right mr-3 " style="margin-top: -34px;font-size:20px; color:gray;"></i></b>
                     <p class="help-block text-danger"></p>
                   </div>
                 </div>
@@ -102,11 +102,18 @@
                                     <?php while($row = $sql->fetch_row()): ?>
                                       <tr>
                                           <li class="list-group-item  mr-4 mb-4 w3-card">
-                                                  <div class="" style="width: 18rem;">
-                                                      <img class="w3-image card-img-top" src="models/upload_bh/house.png" alt="Card image cap" height="250px" width="250px">
+                                              <a href="#" class="w3-hover-opacity" style="color:black;text-decoration:none">
+                                                  <div class="" style="width: 20rem; font-size:18px">
+                                                      <img style="object-fit: cover;" class="card-img-top" src="models/upload_bh/<?=$row['4'];?>" alt="Card image cap" height="250px" width="250px">
                                                       <hr style="border: 2px solid #0a0a0a;">
-                                                      <span class="text-center text-uppercase"><b> <?=$row['1'];?> BOARDING HOUSE </b></span><br>
+                                                      <span class=""><b> <?=$row['1'];?> Boarding House </b></span>
+                                                      <span class="float-right"><i class="fa fa-star"></i> 5.0 </span><br>
+                                                      <span class="text-secondary">Beach and mountain views</span><br>
+                                                      <span class=""><img src="resources/images/peso.png" height="18px"></span>
+                                                      <span class="" style="margin-top:15px"> 1500 </span>
+                                                      
                                                   </div>
+                                              </a>
                                           </li>
                                       </tr>
                                     <?php endwhile;?>    
@@ -162,6 +169,10 @@
         .list-group-horizontal .list-group-item {
             display: inline-block;
         }
+        #pixel{
+            
+        }
+
     </style>
     <!-- Bootstrap core JavaScript -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>

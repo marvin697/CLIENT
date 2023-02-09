@@ -4,7 +4,7 @@
             <a href="../owner/manage_house.php?bhouse_id=<?=$bhouse_id;?>"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
         </div>
         <div class="">
-                <img class="card-img-top" src="../models/upload_room/<?=$image;?>" alt="Card image cap" height="250px" width="250px">
+                <img style="object-fit: cover;" class="card-img-top" src="../models/upload_room/<?=$image;?>" alt="Card image cap" height="250px" width="250px">
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
                     <b>ROOM NO.:</b> <span style="margin-left: 15px"><?=$rm_no;?></span><br>

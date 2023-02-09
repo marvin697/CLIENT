@@ -4,7 +4,7 @@
             <a href="../owner/dashboard.php"><button class="btn btn-sm btn-outline-dark mb-3"> <i class="fa fa-angle-double-left"></i> Back</button></a>
         </div>
         <div class="">
-                <img class="card-img-top" src="../models/upload_bh/<?=$img;?>" alt="Card image cap" height="250px" width="250px">
+                <img style="object-fit: cover;" class="card-img-top" src="../models/upload_bh/<?=$img;?>" alt="Card image cap" height="250px" width="250px">
                 <hr style="border: 2px solid #0a0a0a;">
                 <span class="text-center text-uppercase">
                     <b>BH NAME:</b> <span style="margin-left: 15px"><?=$bh;?></span><br>
@@ -283,7 +283,7 @@
                                                                     <span class="float-right"><a href="../owner/edit_page.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$img['0'];?>&&tbl=images" type="button" > <i class="fa fa-edit text-dark "></i></a></span>
                                                                     </b></span><br>
                                                                     <hr style="border: 2px solid #0a0a0a;">
-                                                                    <img class="card-img-top" src="../models/upload_room/<?=$img['5'];?>" alt="Card image cap" height="250px" width="250px">
+                                                                    <img style="object-fit: cover;" class="card-img-center" src="../models/upload_room/<?=$img['5'];?>" alt="Card image cap" height="250px" width="250px">
                                                                 </div>
                                                         </li>
                                                     <?php endwhile;?>    

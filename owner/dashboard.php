@@ -54,7 +54,7 @@
                                 
                                     <li id="list" class="list-group-item  mr-4 mb-4">
                                             <div class="" style="width: 18rem;">
-                                                <img class="card-img-top" src="../models/upload_bh/<?=$row['4'];?>" alt="Card image cap" height="250px" width="250px">
+                                                <img style="object-fit: cover;" class="card-img-top" src="../models/upload_bh/<?=$row['4'];?>" alt="Card image cap" height="250px" width="250px">
                                                 <hr style="border: 2px solid #0a0a0a;">
                                                 <span class="text-center text-uppercase"><b> <?=$row['1'];?> BOARDING HOUSE </b></span><br>
                                                 <a href="../owner/edit_bh.php?bhouse_id=<?=$row['0'];?>" ><button class="btn btn-sm btn-dark mt-4">Edit <i class="fa fa-edit"></i></button></a>
