@@ -27,7 +27,7 @@
         $rm_no = $row2['room_no'];
         $description = $row2['description'];
         $room_type = $row2['room_type_id'];
-        $amenities = $row2['amenities'];
+        // $amenities = $row2['amenities'];
         $image = $row2['image'];
 
         $sql = mysqli_query($conn,"SELECT * FROM bed WHERE bhouse_id ='$bhouse_id' AND room_id='$rm_no' ");

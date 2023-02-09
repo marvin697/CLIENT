@@ -55,14 +55,13 @@
         $bhouse_name = $_POST['bhouse_name'];
         $description = $_POST['description'];
         $location = $_POST['location'];
-        $amenities = $_POST['amenities'];
         $file = $_FILES['file'];
 
         if($_FILES['file']['size'] == 0 ){
 
             $sql = mysqli_query($conn,"UPDATE boarding_house 
                                                 
-                SET bhouse_name = '$bhouse_name', description ='$description', location ='$location', amenities ='$amenities' 
+                SET bhouse_name = '$bhouse_name', description ='$description', location ='$location' 
                 WHERE bhouse_id ='".$id."' ");
 
             if($sql){
@@ -88,7 +87,7 @@
 
                 $sql = mysqli_query($conn,"UPDATE boarding_house 
                                                 
-                SET bhouse_name = '$bhouse_name', description ='$description', location ='$location', image ='$file', amenities ='$amenities' 
+                SET bhouse_name = '$bhouse_name', description ='$description', location ='$location', image ='$file' 
                 WHERE bhouse_id ='".$id."' ");
 
                 if($sql){
@@ -150,13 +149,13 @@
         $room_id = $_POST['room_id'];
         $room_no = $_POST['room_no'];
         $room_type = $_POST['room_type'];
-        $amenities = $_POST['amenities'];
+        // $amenities = $_POST['amenities'];
         $description = $_POST['description'];
 
         $sql = mysqli_query($conn,"UPDATE room SET
                                                 
                     room_no = '$room_no', room_type_id = '$room_type',
-                    amenities = '$amenities', description = '$description' 
+                    description = '$description' 
 
                     WHERE bhouse_id ='".$bid."' AND room_id='".$room_id."' ");
 

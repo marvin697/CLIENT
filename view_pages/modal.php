@@ -163,6 +163,68 @@
 </div>
 
 
+<!-- MODAL FOR AMENITIES -->
+<div id="amenities=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Amenities</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body font-weight-bold">
+                        <form action="../models/register.php" method="POST">
+                            <div class="row Amenities">
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Place offer:</label>
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">
+                                        <select name="place_offer[]" class="custom-select">
+                                            <option></option>
+                                            <option value="bathroom">Bathroom</option>
+                                            <option value="bedroom_and_laudry">Bedroom and laundry</option>
+                                            <option value="heating_and_cooling">Heating and Cooling</option>
+                                            <option value="kitchen_and_dining">Kitchen and dining</option>
+                                            <option value="location_features">Location features</option>
+                                            <option value="indoor">Indoor</option>
+                                            <option value="outdoor">Outdoor</option>
+                                            <option value="parking_and_facilities">Parking and facilities</option>
+                                            <option value="services">Services</option>
+                                            <option value="not_included">Not included</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label for="" class="col-form-label">Amenities:</label>
+                                        <input type="text" class="form-control" name="amenities[]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="" class="col-form-label">Actions:</label>
+                                    <div class="btn-group">
+                                        <button type="button" class="addAmenities btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="newAmenities"></div>
+
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="add_amenities">Submit</button>
+                            </div> 
+                            <!-- End -->
+                        </form>
+                    </div>
+                </div>
+</div>
+</div>
+
+
 <!-- MODAL FOR ROOM -->
 <div id="room=<?=$bhouse_id;?>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -177,7 +239,7 @@
                         <form action="../models/register.php" method="POST" enctype="multipart/form-data">
                             <div class="Room">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Room no.:</label>
                                             <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">
@@ -185,7 +247,7 @@
                                             <input type="number" class="form-control" name="room_no" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Room Type:</label>
                                             <select name="room_type" class="custom-select-md form-control mb-3" required>
@@ -204,15 +266,7 @@
                                         </div>
                                         
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="" class="col-form-label">Amenities:</label>
-                                            <input type="text" class="form-control" name="amenities" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Image:</label>
                                             <input type="file" class="form-control" name="file">
@@ -258,6 +312,7 @@
         $(document).on('click', '.removeButton', function () {
             $(this).closest('.roomType').remove();
             $(this).closest('.roomRules').remove();
+            $(this).closest('.Amenities').remove();
         });
 
         $(document).on('click', '.addRules', function () {
@@ -305,6 +360,43 @@
                                     <label for="" class="col-form-label">Actions:</label>\
                                     <div class="btn-group">\
                                         <button type="button" class="addType btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>\
+                                        <button type="button" class="removeButton btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>\
+                                    </div>\
+                                    </div>\
+                            </div>');
+        });
+        $(document).on('click', '.addAmenities', function () {
+            $('.newAmenities').append('<div class="row Amenities">\
+                                <div class="col-md-5">\
+                                    <div class="form-group">\
+                                        <label for="" class="col-form-label">Place offer:</label>\
+                                        <input type="hidden" name="id" value="<?php echo $bhouse_id; ?>">\
+                                        <input type="hidden" name="bhouse_id[]" value="<?php echo $bhouse_id; ?>">\
+                                        <select name="place_offer[]" class="custom-select">\
+                                            <option></option>\
+                                            <option value="bathroom">Bathroom</option>\
+                                            <option value="bedroom_and_laudry">Bedroom and laundry</option>\
+                                            <option value="heating_and_cooling">Heating and Cooling</option>\
+                                            <option value="kitchen_and_dining">Kitchen and dining</option>\
+                                            <option value="location_features">Location features</option>\
+                                            <option value="indoor">Indoor</option>\
+                                            <option value="outdoor">Outdoor</option>\
+                                            <option value="parking_and_facilities">Parking and facilities</option>\
+                                            <option value="services">Services</option>\
+                                            <option value="not_included">Not included</option>\
+                                        </select>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-5">\
+                                     <div class="form-group">\
+                                        <label for="" class="col-form-label">Amenities:</label>\
+                                        <input type="text" class="form-control" name="amenities[]" required>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-2">\
+                                    <label for="" class="col-form-label">Actions:</label>\
+                                    <div class="btn-group">\
+                                        <button type="button" class="addAmenities btn btn-sm btn-dark form-control"><i class="fa fa-plus"></i></button>\
                                         <button type="button" class="removeButton btn btn-sm btn-danger form-control"><i class="fa fa-trash"></i> </button>\
                                     </div>\
                                     </div>\

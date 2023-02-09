@@ -17,7 +17,6 @@
                     </span><br>
                     <b>Description:</b> <span style="margin-left: 15px"><?=$description;?></span><br>
                     <b>NO. OF BEDS:</b> <span style="margin-left: 15px"><?=$count_bed;?></span><br>
-                    <b>Amenities:</b> <span style="margin-left: 15px"><?=$amenities;?></span><br>
                 </span><br>
         </div>
     </div>

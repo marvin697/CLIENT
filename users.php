@@ -155,9 +155,16 @@
 </section>
 <style>
 #tableStyle {
-    border-style: groove;
+    /* border-style: groove;
     border: 5px solid;
-    border-radius: 15px;
+    border-radius: 15px; */
+    box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        border: 3px solid #0a0a0a;
+        border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
 }
 </style>
 <?php include 'include/footer.php';?>

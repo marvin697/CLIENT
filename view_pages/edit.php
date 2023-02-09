@@ -10,7 +10,6 @@
         $bh = $row['bhouse_name'];
         $desc = $row['description'];
         $loc = $row['location'];
-        $ame = $row['amenities'];
         $img = $row['image'];
         $added_user = $row['user_id'];
         
@@ -29,7 +28,6 @@
                     <b>BH NAME:</b> <span style="margin-left: 15px"><?=$bh;?></span><br>
                     <b>Location:</b> <span style="margin-left: 15px"><?=$loc;?></span><br>
                     <b>Description:</b> <span style="margin-left: 15px"><?=$desc;?></span><br>
-                    <b>Amenities:</b> <span style="margin-left: 15px"><?=$ame;?></span><br>
                 </span><br>
         </div>
     </div>

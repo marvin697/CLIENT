@@ -12,7 +12,6 @@
         $bh = $row['bhouse_name'];
         $desc = $row['description'];
         $loc = $row['location'];
-        $ame = $row['amenities'];
         $img = $row['image'];
         $added_user = $row['user_id'];
 

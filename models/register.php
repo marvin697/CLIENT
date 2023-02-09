@@ -142,7 +142,6 @@
         $bhouse_name = $_POST['bhouse_name'];
         $description = $_POST['description'];
         $location = $_POST['location'];
-        $amenities = $_POST['amenities'];
         $file = $_FILES['file'];
        
 
@@ -150,9 +149,9 @@
 
         if($_FILES['file']['size'] == 0 ){
 
-            $query = "INSERT INTO boarding_house ( bhouse_name, description, location, amenities, image, user_id ) 
+            $query = "INSERT INTO boarding_house ( bhouse_name, description, location, image, user_id ) 
                 
-                                VALUES ( '$bhouse_name', '$description','$location','$amenities','house.png','$user_id')";
+                                VALUES ( '$bhouse_name', '$description','$location','house.png','$user_id')";
                 
 
             $result = mysqli_query($conn, $query);
@@ -180,9 +179,9 @@
             if(in_array($ext,$allowed)){
                 move_uploaded_file($tmp_name,$path);
 
-                $query = "INSERT INTO boarding_house ( bhouse_name, description, location, amenities, image, user_id ) 
+                $query = "INSERT INTO boarding_house ( bhouse_name, description, location, image, user_id ) 
                 
-                                VALUES ( '$bhouse_name', '$description','$location','$amenities','$file','$user_id')";
+                                VALUES ( '$bhouse_name', '$description','$location','$file','$user_id')";
                 
 
                 $result = mysqli_query($conn, $query);
@@ -215,7 +214,6 @@
         $room_no = $_POST['room_no'];
         $room_type = $_POST['room_type'];
         $description = $_POST['description'];
-        $amenities = $_POST['amenities'];
         $file = $_FILES['file'];
        
 
@@ -223,9 +221,9 @@
 
         if($_FILES['file']['size'] == 0 ){
 
-            $query = "INSERT INTO room ( bhouse_id, room_no, description, room_type_id, amenities, image ) 
+            $query = "INSERT INTO room ( bhouse_id, room_no, description, room_type_id, image ) 
                 
-                                VALUES ( '$bhouse_id', '$room_no','$description','$room_type','$amenities', 'room.png')";
+                                VALUES ( '$bhouse_id', '$room_no','$description','$room_type', 'room.png')";
                 
 
             $result = mysqli_query($conn, $query);
@@ -249,9 +247,9 @@
             if(in_array($ext,$allowed)){
                 move_uploaded_file($tmp_name,$path);
 
-                $query = "INSERT INTO room ( bhouse_id, room_no, description,  room_type_id, amenities, image ) 
+                $query = "INSERT INTO room ( bhouse_id, room_no, description,  room_type_id, image ) 
                 
-                                VALUES ( '$bhouse_id', '$room_no','$description', '$room_type','$amenities', '$file')";
+                                VALUES ( '$bhouse_id', '$room_no','$description', '$room_type', '$file')";
                 
 
 
@@ -337,6 +335,29 @@
             // var_dump($_POST['room_id'][$i]);
 
             $query = "INSERT INTO rules (bhouse_id, rules) VALUES ('".$_POST['bhouse_id'][$i]."','".$_POST['rules'][$i]."')";
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+
+                    header("location: ../owner/manage_house.php?bhouse_id=$id");
+                    // echo 'Success';
+
+            }else {
+                echo 'Error.';
+            } 
+
+        endfor;
+    }
+    if(isset($_POST['add_amenities'])) {
+
+        $id = $_POST['id'];
+        $bhouse_id = $_POST['bhouse_id'];
+        
+        for ($i = 0; $i < count($_POST['bhouse_id']); $i++):
+
+            // var_dump($_POST['room_id'][$i]);
+
+            $query = "INSERT INTO amenities (bhouse_id, place_offer, amenities) VALUES ('".$_POST['bhouse_id'][$i]."','".$_POST['place_offer'][$i]."','".$_POST['amenities'][$i]."')";
             $result = mysqli_query($conn, $query);
 
             if($result){

@@ -120,16 +120,10 @@
                                     </div>
                                 </div>
                                 <div class="row text-uppercase font-weight-bold">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="" class="col-form-label">Amenities:</label>
-                                            <input type="text" class="form-control" name="amenities" value="<?php echo $amenities; ?>" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Description:</label>
-                                            <textarea name="description" class="form-control" cols="10" rows="1"><?php echo $description; ?></textarea>
+                                            <textarea name="description" class="form-control" cols="10" rows="3"><?php echo $description; ?></textarea>
                                         </div>
                                     </div>
                                 </div>

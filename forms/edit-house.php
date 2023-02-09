@@ -27,28 +27,18 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="amenities">Amenities</label>
-                        <input type="text" class="form-control" id="amenities" placeholder="" 
-                            name="amenities" value="<?php echo $ame; ?>" required>
+                        <label for="description">Image</label>
+                        <input type="file" name="file" id="file">
                     </div>
                 </div>
-
-
             </div>
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" id="description" cols="30" rows="3"
                             class="form-control"><?php echo $desc; ?></textarea>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="description">Image</label>
-                        <input type="file" name="file" id="file">
                     </div>
                 </div>
             </div>

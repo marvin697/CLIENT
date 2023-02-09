@@ -62,7 +62,7 @@
                                             <tr>
                                                 <th class="text-center"><a target="_blank" href="models/upload_bh/<?php echo $img; ?>"><img
                                                     src="models/upload_bh/<?php echo $img; ?>"
-                                                    class="mr-0 mt-0 p-2 rounded" height="350px" width="350px"></a>
+                                                    class="mr-0 mt-0 p-2 rounded" height="300px" width="300px"></a>
                                                 </th>
                                             </tr>
                                     </table>
@@ -90,11 +90,11 @@
                                                 <th><span> Amenities : </span><hr></th>
                                                 <td><span style="margin-left: 25px;"> <?= $ame; ?> </span><hr></td>
                                             </tr> <br><br>
-                                            <tr class="mt-2 text-uppercase" style="font-size: 18px">
+                                            <!-- <tr class="mt-2 text-uppercase" style="font-size: 18px">
                                                 <th>
                                                         <a href="edit_bhouse.php?bhouse_id=<?= $bhouse_id; ?>" class=""><button class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i> Edit Information</button></a>
                                                 </th>
-                                            </tr>
+                                            </tr> -->
                                     </table>
                                 </div>    
                             </div>
@@ -114,9 +114,16 @@
 </section>
 <style>
 #tableStyle {
-    border-style: groove;
+    /* border-style: groove;
     border: 5px solid;
-    border-radius: 15px;
+    border-radius: 15px; */
+    box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.75);
+        border: 3px solid #0a0a0a;
+        border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
 }
 </style>
 <?php include 'include/footer.php';?>
