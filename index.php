@@ -169,10 +169,6 @@
         .list-group-horizontal .list-group-item {
             display: inline-block;
         }
-        #pixel{
-            
-        }
-
     </style>
     <!-- Bootstrap core JavaScript -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>

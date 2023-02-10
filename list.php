@@ -59,7 +59,6 @@
                                     <th>image</th>
                                     <th>BH name</th>
                                     <th>location</th>
-                                    <th>amenities</th>
                                     <th>description</th>
                                     <th>actions</th>
                                 </tr>
@@ -68,12 +67,11 @@
                                 <?php $i= 1; while ($row = $result->fetch_row()) : ?>
                                 <tr>
                                     <td><?php echo $i++;?></td>
-                                    <td><a target="_blank" href="models/upload_bh/<?php echo $row['5']; ?>"><img
-                                                src="models/upload_bh/<?php echo $row[5]; ?>"
+                                    <td><a target="_blank" href="models/upload_bh/<?php echo $row['4']; ?>"><img
+                                                src="models/upload_bh/<?php echo $row[4]; ?>"
                                                 class="mr-0 mt-0 rounded" height="50px" width="50px"></a></td>
                                     <td><?php echo $row['1'];?></td>
                                     <td><?php echo $row['3'];?></td>
-                                    <td><?php echo $row['4'];?></td>
                                     <td><?php echo $row['2'];?></td>
                                     <td>
                                         <div class="btn-group">

@@ -2,6 +2,7 @@
 	session_start();
 	include_once 'config/dbcon.php';
 	include 'include/header_admin.php';
+	include 'models/fetch.php';
 
     if(isset($_GET['bhouse_id'])){
         $bhouse_id = $_GET['bhouse_id'];
@@ -49,7 +50,7 @@
                 <h2><?= $bh ?> Boarding House</h2>
                 <div id="tableStyle" class="card p-4">
                     <div class="">
-                        <a href="list.php"><button class="btn btn-sm btn-outline-dark  mb-"><i
+                        <a href="view_bhouse.php?bhouse_id=<?=$bhouse_id;?>"><button class="btn btn-sm btn-outline-dark  mb-"><i
                                     class="fa fa-angle-double-left"></i> Back </button></a>
                     </div><br>
                     <!-- <hr style="border:0.5px solid black"> -->
@@ -59,13 +60,13 @@
                                 <div class="table-responsive">
                                     <div class="">
                                         <a target="_blank" href="models/upload_bh/<?php echo $img; ?>">
-                                                        <img style="object-fit: cover;" src="models/upload_bh/<?php echo $img; ?>"
+                                                        <img style="object-fit: cover;" src="models/upload_room/<?php echo $image; ?>"
                                                         class="card-img-top" height="250px" width="250px"></a>
                                     </div>
                                     <div class="mt-4 text-uppercase">
-                                        <span class=""><b>BH Name:</b><span style="margin-left: 25px;"> <?= $bh; ?> </span></span><br>
-                                        <span class=""><b>Location:</b> <span style="margin-left: 25px;"> <?= $loc; ?> </span></span><br>
-                                        <span class=""><b>Description:</b> <span style="margin-left: 25px;"> <?= $desc; ?> </span></span><br>
+                                        <span class=""><b>Room:</b><span style="margin-left: 25px;"> <?= $room_no; ?> </span></span><br>
+                                        <span class=""><b>Beds:</b> <span style="margin-left: 25px;"> <?= $loc; ?> </span></span><br>
+                                        <span class=""><b>Description:</b> <span style="margin-left: 25px;"> <?= $description; ?> </span></span><br>
                                     </div>
                                 </div>    
                             </div>
@@ -101,53 +102,58 @@
                                     </div><br>
                                     <!-- ROOM SECTION -->
                                     <div class="">
-                                        <h6>Room    <span class="float-right"><a type="button" id="click"><i id="icon" class="fa fa-chevron-down"></i></a></span></h6><hr style="margin-top: -5px;">
+                                        <h6>
+                                            Room   <?=$room_no;?>  
+                                            <i class="fa fa-angle-double-right ml-2 mr-2"></i>  Bed 
+                                            <span class="float-right"><a type="button" id="click"><i id="icon" class="fa fa-chevron-down"></i></a></span>
+                                        </h6><hr style="margin-top: -5px;">
+
                                         <div class="">
                                             <div id="roomDetails">
                                                     <div class="table-responsive" style="height:300px"><br>
-                                                        <?php 
-                                                            $sql = mysqli_query($conn,"SELECT * FROM room WHERE bhouse_id ='$bhouse_id' ");
-                                                            if($sql->num_rows > 0):
-                                                        ?>
-                                                            <ul class="list-group-horizontal">
-                                                                <table>
-                                                                    <tbody>
+                                                            <?php 
+                                                                $sql = "SELECT b.bed_id, b.bed_no, r.room_no, b.price, b.bed_status
+                                                                                FROM bed AS b
+                                                                                INNER JOIN room AS r
+                                                                                ON r.room_id = b.room_id
 
-                                                                        <?php while($img = $sql->fetch_row()): ?>
-                                                                        
-                                                                            <li  class="list-group-item  mr-4 mb-4 ">
-                                                                                    <div class="" style="width: 10rem;">
-                                                                                        <span class="text-center text-uppercase"><b>ROOM <?=$img['2'];?>
-                                                                                        <span class="float-right">
-                                                                                            <a href="room_details.php?bhouse_id=<?=$bhouse_id;?>&&room_id=<?=$img['0'];?>" type="button">
-                                                                                                <i class="fa fa-ellipsis-h text-dark "></i>
-                                                                                            </a>
-                                                                                        </span>
-                                                                                        </b></span><br>
-                                                                                        <hr style="border: 2px solid #0a0a0a;">
-                                                                                        <img style="object-fit: cover;" class="card-img-center" src="models/upload_room/<?=$img['5'];?>" alt="Card image cap" height="160px" width="160px">
+                                                                                WHERE b.bhouse_id ='$bhouse_id' AND b.room_id='$room_id' ";
+                                                                $res =$conn->query($sql);
+
+                                                                if($res->num_rows > 0):
+                                                            ?>
+                                                                <table class="table table-sm table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>bed no.</th>
+                                                                            <th>room no.</th>
+                                                                            <th>price</th>
+                                                                            <th>bed_status</th>
+                                                                            <!-- <th>actions</th> -->
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php while ($bed = $res->fetch_row()):?>
+                                                                            <tr>
+                                                                                <td><?php echo $bed['1']; ?></td>
+                                                                                <td><?php echo $bed['2']; ?></td>
+                                                                                <td><?php echo $bed['3']; ?></td>
+                                                                                <td><?php echo $bed['4']; ?></td>
+                                                                                <!-- <td>
+                                                                                    <div class="btn-group">
+                                                                                        <a href="../owner/edit_bedroom.php?bhouse_id=<?=$bhouse_id;?>&&roomID=<?=$rm_id;?>&&bed_id=<?=$bed['0'];?>&&tbl=bed"><button class="btn btn-sm "><i class="fa fa-edit"></i></button></a>
                                                                                     </div>
-                                                                            </li>
-                                                                        <?php endwhile;?>    
+                                                                                </td> -->
+                                                                            </tr>
+                                                                        <?php endwhile; ?>
                                                                     </tbody>
                                                                 </table>
-                                                            </ul>
-                                                        <?php endif; ?>
+                                                            <?php endif; ?>
                                                     </div>
                                                     
                                             </div>
                                         </div>
                                     </div><br>
-                                    <!-- BED SECTION -->
-                                    <div class="">
-                                        <h6>Amenities    <span class="float-right"><a type="button" id="click_bed"><i id="icon2" class="fa fa-chevron-down"></i></a></span></h6><hr style="margin-top: -5px;">
-                                        <div class="">
-                                            <div id="bedDetails">
-                                                    <?php include_once 'view_amenities.php';?>
-                                            </div>
-                                        </div>
-                                    </div><br>
-                                    
                                 </div>    
                             </div>
                             <br><br>

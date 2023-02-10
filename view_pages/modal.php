@@ -184,7 +184,7 @@
                                         <select name="place_offer[]" class="custom-select">
                                             <option></option>
                                             <option value="bathroom">Bathroom</option>
-                                            <option value="bedroom_and_laudry">Bedroom and laundry</option>
+                                            <option value="bedroom_and_laundry">Bedroom and laundry</option>
                                             <option value="heating_and_cooling">Heating and Cooling</option>
                                             <option value="kitchen_and_dining">Kitchen and dining</option>
                                             <option value="location_features">Location features</option>
