@@ -1,4 +1,7 @@
-
+<?php 
+  include_once 'config/dbcon.php';
+  include_once 'models/fetch.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +21,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link type="text/css" href="resources/css/w3.css" href="stylesheet">
+    <link type="text/css" href="resources/css/w3.css" rel="stylesheet">
     <link type="text/css" href="assets/css/RESERVE.css" rel="stylesheet">
     <link type="text/css" href="assets/css/style.css" rel="stylesheet">
   </head>
@@ -36,7 +39,7 @@
           <ul class="navbar-nav text-uppercase ml-auto">
 
             <li class="nav-item">
-              <a class="nav-link" href="reservation.php">Photos</a>
+              <a class="nav-link" href="reservation.php?reserved_id=<?=$bhouse_id;?>">Photos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#search">Amenities</a>
@@ -55,34 +58,44 @@
       </div>
     </nav>
 
-    <!-- Header -->
-    <header class="masthead">
-      <div class="card-body">
-        <div class="intro-text">
-          <div class="row">
-                <div class="col-md-4 ">
-                  <div class="bg-dark">
-                    fd<br><br><br><br>
-                  </div>
+    <!-- photos -->
+    <section id="photos">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+                <!-- BH DISPLAY SECTION -->
+                <div class="">
+                  <h3><i class="fa fa-home"></i> <?=$bhname;?> Boarding House</h3>
                 </div>
-                <div class="col-md-4 ">
-                  <div class="bg-dark">
-                    fd<br><br><br><br>
-                  </div>
+                <div class="row">
+                    <div class="col-md-6">
+                      <div class="">
+                            <img style="object-fit: cover; border-radius: 45px ;" class="card-img-top" src="models/upload_bh/<?=$bhimg;?>" height="450px" width="250px">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="w3-card">
+                          <br><br><br>d
+                      </div>
+                    </div>
                 </div>
-                <div class="col-md-4 ">
-                  <div class="bg-dark">
-                    fd<br><br><br><br>
-                  </div>
-                </div>
-              </div>
-          <div class="intro-lead-in"></div>
-          <div class="intro-heading text-uppercase"></div>
+                <!-- END SECTION -->
+          </div>
         </div>
       </div>
-    </header>
+  
+                
 
-     <!-- Search -->
+
+
+
+
+
+
+
+      <br><br><br><br><br><br>
+    </section>    
+    <!-- Search -->
     <section id="search">
       <div class="container">
         <div class="row">
@@ -202,6 +215,9 @@
         }
         #card:hover {
           opacity: 0.5;
+        }
+        #myrow{
+          margin-top: -110px;
         }
     </style>
     <!-- Bootstrap core JavaScript -->

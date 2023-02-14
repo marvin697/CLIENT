@@ -98,5 +98,19 @@ if(isset($_GET['room_id']) && isset($_GET['bhouse_id'])){
     $amenities = $row['amenities'];
     $image = $row['image'];
 } 
+if(isset($_GET['reserved_id'])){
+
+    $bhouse_id = $_GET['reserved_id'];
+    
+    //bh table
+    $sql = "SELECT * FROM boarding_house WHERE bhouse_id ='$bhouse_id'";
+    $res = $conn->query($sql); 
+    $row = mysqli_fetch_array($res);
+
+    $bhname = $row['bhouse_name'];
+    $bhdesc = $row['description'];
+    $bhloc = $row['location'];
+    $bhimg = $row['image'];
+} 
 
 ?>

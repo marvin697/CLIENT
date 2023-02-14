@@ -102,7 +102,7 @@
                                     <?php while($row = $sql->fetch_row()): ?>
                                       <tr id="count">
                                           <li id="card" class="list-group-item  mr-4 mb-4 ">
-                                              <a href="reservation.php?bhouse_id=<?=$row['0'];?>" class="w3-hover-opacity" style="color:black;text-decoration:none">
+                                              <a href="reservation.php?reserved_id=<?=$row['0'];?>" class="w3-hover-opacity" style="color:black;text-decoration:none">
                                                   <div style="width: 20rem; font-size:18px">
                                                       <img style="object-fit: cover;" class="card-img-top" src="models/upload_bh/<?=$row['4'];?>" alt="Card image cap" height="250px" width="250px">
                                                       <hr style="border: 2px solid #0a0a0a;">
