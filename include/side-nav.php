@@ -20,6 +20,9 @@
                     <a class="nav-link" href="dashboard.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
+                    <a href="messages.php" class="nav-link">Messages</a>
+                </li>
+                <li class="nav-item">
                     <a href="list.php" class="nav-link">Boarding House</a>
                 </li>
                 <li class="nav-item">

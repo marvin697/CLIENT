@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Reservation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,15 +19,15 @@
 
     <!-- Custom styles for this template -->
     <link type="text/css" href="resources/css/w3.css" href="stylesheet">
-    <link type="text/css" href="assets/css/mySTYLE.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/RESERVE.css" rel="stylesheet">
     <link type="text/css" href="assets/css/style.css" rel="stylesheet">
   </head>
 
   <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top w3-card bg-dark" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">BH BOOKING AND RESERVATION</a>
+        <a class="navbar-brand js-scroll-trigger" href="index.php">BH BOOKING AND RESERVATION</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -36,17 +36,20 @@
           <ul class="navbar-nav text-uppercase ml-auto">
 
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
+              <a class="nav-link" href="reservation.php">Photos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#search">Search</a>
+              <a class="nav-link js-scroll-trigger" href="#search">Amenities</a>
             </li>
-
-           
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="register.php">Register</a>
-            </li> -->
-
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#search">REVIEWS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#search">LOCATION</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#search">RESERVE</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -54,10 +57,27 @@
 
     <!-- Header -->
     <header class="masthead">
-      <div class="container">
+      <div class="card-body">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Boarding House Booking and Reservation!</div>
-          <div class="intro-heading text-uppercase">It's Nice To BE Back<br></div>
+          <div class="row">
+                <div class="col-md-4 ">
+                  <div class="bg-dark">
+                    fd<br><br><br><br>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="bg-dark">
+                    fd<br><br><br><br>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="bg-dark">
+                    fd<br><br><br><br>
+                  </div>
+                </div>
+              </div>
+          <div class="intro-lead-in"></div>
+          <div class="intro-heading text-uppercase"></div>
         </div>
       </div>
     </header>

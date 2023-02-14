@@ -221,9 +221,9 @@
 
         if($_FILES['file']['size'] == 0 ){
 
-            $query = "INSERT INTO room ( bhouse_id, room_no, description, room_type_id, image ) 
+            $query = "INSERT INTO room ( bhouse_id, room_no, description, room_type_id, image, amenities ) 
                 
-                                VALUES ( '$bhouse_id', '$room_no','$description','$room_type', 'room.png')";
+                                VALUES ( '$bhouse_id', '$room_no','$description','$room_type', 'room.png', '')";
                 
 
             $result = mysqli_query($conn, $query);
@@ -247,9 +247,9 @@
             if(in_array($ext,$allowed)){
                 move_uploaded_file($tmp_name,$path);
 
-                $query = "INSERT INTO room ( bhouse_id, room_no, description,  room_type_id, image ) 
+                $query = "INSERT INTO room ( bhouse_id, room_no, description,  room_type_id, image, amenities ) 
                 
-                                VALUES ( '$bhouse_id', '$room_no','$description', '$room_type', '$file')";
+                                VALUES ( '$bhouse_id', '$room_no','$description', '$room_type', '$file', '')";
                 
 
 
